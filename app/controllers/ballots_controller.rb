@@ -1,6 +1,7 @@
 class BallotsController < ApplicationController
   before_action :set_ballot, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_voter!#, except: [:index, :show]
+  
   # GET /ballots
   # GET /ballots.json
   def index

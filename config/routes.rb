@@ -1,4 +1,6 @@
 BallotBreakdown::Application.routes.draw do
+  devise_for :voters, :controllers => {:sessions => 'sessions'}
+  
   resources :notes
 
   resources :politicians
