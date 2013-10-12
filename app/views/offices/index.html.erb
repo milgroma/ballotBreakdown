@@ -1,0 +1,43 @@
+<h1>Listing offices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tier</th>
+      <th>Office</th>
+      <th>District</th>
+      <th>Territory</th>
+      <th>Term limit</th>
+      <th>Terms</th>
+      <th>Ballots</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @offices.each do |office| %>
+      <tr>
+        <td><%= office.tier %></td>
+        <td><%= office.office %></td>
+        <td><%= office.district %></td>
+        <td><%= office.territory %></td>
+        <td><%= office.term_limit %></td>
+        <td><%= office.terms %></td>
+        <td><%= office.ballot_ids %></td>
+        <td><%= link_to 'Show', office %></td>
+        <td><%= link_to 'Edit', edit_office_path(office) %></td>
+        <td><%= link_to 'Destroy', office, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Office', new_office_path %>
+
+<p>
+	<%= link_to 'Back to Ballots', ballots_path %>
+</p>

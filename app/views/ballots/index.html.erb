@@ -1,0 +1,37 @@
+<h1>Listing ballots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Election date</th>
+      <th>State</th>
+      <th>County</th>
+      <th>City</th>
+      <th>Ward</th>
+      <th>Precinct</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ballots.each do |ballot| %>
+      <tr>
+        <td><%= ballot.election_date %></td>
+        <td><%= ballot.state %></td>
+        <td><%= ballot.county %></td>
+        <td><%= ballot.city %></td>
+        <td><%= ballot.ward %></td>
+        <td><%= ballot.precinct %></td>
+        <td><%= link_to 'Show', ballot %></td>
+        <td><%= link_to 'Edit', edit_ballot_path(ballot) %></td>
+        <td><%= link_to 'Destroy', ballot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ballot', new_ballot_path %>

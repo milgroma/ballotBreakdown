@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Politician:</strong>
+  <%= @note.politician.name %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @note.note %>
+</p>
+
+<p>
+  <strong>Rank:</strong>
+  <%= @note.rank %>
+</p>
+
+<%= link_to 'Edit', edit_note_path(@note) %> |
+<%= link_to 'Back', notes_path %>
+
+<p>
+	<%= link_to 'Add another Note', new_note_path %>
+</p>

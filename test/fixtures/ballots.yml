@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  election_date: 2013-10-05
+  state: MyString
+  county: MyString
+  city: MyString
+  ward: 1
+  precinct: 1
+
+two:
+  election_date: 2013-10-05
+  state: MyString
+  county: MyString
+  city: MyString
+  ward: 1
+  precinct: 1

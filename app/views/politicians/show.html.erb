@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_politician_path(@politician) %> |
+<%= link_to 'Back', politicians_path %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @politician.name %>
+</p>
+
+<p>
+  <strong>Party:</strong>
+  <%= @politician.party %>
+</p>
+
+<p>
+	<strong>Notes:</strong>
+</p>
+
+<ul>
+	<% @politician.notes.each do |note| %>
+		<li><%= link_to note.note, note %></li>
+	<% end %>
+</ul>
+
+<p>
+	<%= link_to 'Add a Note', new_note_path %>
+</p>
+
+<p>
+	<%= link_to 'Add Another Politician', new_politician_path %>
+</p>
+
+<p>
+	<%= link_to 'Add the next Office on the Ballot', new_office_path %>
+</p>
+
+<p>
+	<%= link_to 'Back to Offices', offices_path %>
+</p>
+
+<p>
+	<%= link_to 'Back to Ballots', ballots_path %>
+</p>

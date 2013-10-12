@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tier:</strong>
+  <%= @office.tier %>
+</p>
+
+<p>
+  <strong>Office:</strong>
+  <%= @office.office %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @office.district %>
+</p>
+
+<p>
+  <strong>Territory:</strong>
+  <%= @office.territory %>
+</p>
+
+<p>
+  <strong>Term limit:</strong>
+  <%= @office.term_limit %>
+</p>
+
+<p>
+  <strong>Terms:</strong>
+  <%= @office.terms %>
+</p>
+
+<%= link_to 'Edit', edit_office_path(@office) %> |
+<%= link_to 'Back to Offices', offices_path %>
+
+<p>
+	<%= link_to 'Show Politicians', politicians_path %>
+</p>
+
+<p>
+	<%= link_to 'New Politician', new_politician_path %>
+</p>
+
+<p>
+	<%= link_to 'Add the next Office on the Ballot', new_office_path %>
+</p>

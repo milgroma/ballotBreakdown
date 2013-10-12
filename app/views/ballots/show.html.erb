@@ -1,0 +1,64 @@
+<h1>Ballot</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Election date:</strong><br>
+  <%= @ballot.election_date %>
+</p>
+
+<p>
+  <%= @ballot.county %> County, <%= @ballot.state %><br>
+  <%= @ballot.city %>
+</p>
+
+<p>
+  <strong>Ward:</strong>
+  <%= @ballot.ward %><br>
+  <strong>Precinct:</strong>
+	<%= @ballot.precinct %>
+</p>
+
+
+<%= link_to 'Edit', edit_ballot_path(@ballot) %> |
+<%= link_to 'Back', ballots_path %>
+
+<h2>Offices</h2>
+
+<!-- LIST OUT ALL OF THE OFFICE ON THIS BALLOT -->
+<% @ballot.offices.each do |office| %>
+
+	<p>
+		<strong><%= office.tier %> <%= office.office %></strong><br>
+		<% unless office.district == "" %>
+			<%= office.district %><br>
+		<% end %>
+		
+		<br>
+		
+		<!-- FOR EACH OFFICE, LIST OUT ALL OF THE POLITICIANS RUNNING -->
+		<% office.politicians.each do |politician| %>
+		
+			<%= link_to politician.name, politician %><br>
+			
+			<ul>
+				<!-- FOR EACH POLITICIAN, LIST OUT ALL OF THE NOTES -->
+				<% politician.notes.each do |note| %>
+					<li><%= note.note %></li>
+				<% end %>
+			</ul>
+			
+			<%= link_to 'Add a Note', new_note_path %><br><br><br>
+			
+		<% end %>
+		
+	</p>
+	
+<% end %>
+
+<p>
+	<%= link_to 'Show Offices', offices_path %>
+</p>
+
+<p>
+	<%= link_to 'New Office', new_office_path %>
+</p>

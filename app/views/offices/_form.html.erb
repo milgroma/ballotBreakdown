@@ -1,0 +1,45 @@
+<%= form_for(@office) do |f| %>
+  <% if @office.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@office.errors.count, "error") %> prohibited this office from being saved:</h2>
+
+      <ul>
+      <% @office.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ballot_ids %><br>
+    <%= f.collection_select( 'ballot_ids', Ballot.all, :id, :election_date, prompt: "Which ballot is this for?", :election_date => 'office[ballot_ids][]', :selected => 1) %>
+  </div>
+  <div class="field">
+    <%= f.label :tier %><br>
+    <%= f.text_field :tier %>
+  </div>
+  <div class="field">
+    <%= f.label :office %><br>
+    <%= f.text_field :office %>
+  </div>
+  <div class="field">
+    <%= f.label :district %><br>
+    <%= f.text_field :district %>
+  </div>
+  <div class="field">
+    <%= f.label :territory %><br>
+    <%= f.text_field :territory %>
+  </div>
+  <div class="field">
+    <%= f.label :term_limit %><br>
+    <%= f.select :term_limit, options_for_select(["Yes", "No"]), prompt: "Does this office have a term limit?" %>
+  </div>
+  <div class="field">
+    <%= f.label :terms %><br>
+    <%= f.text_field :terms %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

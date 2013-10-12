@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tier: MyString
+  office: MyString
+  district: MyString
+  territory: MyString
+  term_limit: MyString
+
+two:
+  tier: MyString
+  office: MyString
+  district: MyString
+  territory: MyString
+  term_limit: MyString
