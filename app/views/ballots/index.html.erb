@@ -1,37 +1,15 @@
-<h1>Listing ballots</h1>
+<div id="ballotsPage">
+	
+	<div id="topBar">
+		<%= link_to 'New Ballot', new_ballot_path, :class => "do" %>
+	</div>
+	
+		<h1>Ballots</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Election date</th>
-      <th>State</th>
-      <th>County</th>
-      <th>City</th>
-      <th>Ward</th>
-      <th>Precinct</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <% @ballots.each do |ballot| %>
+		<p><%= link_to ballot.election_date.strftime("%B %d, %Y"), ballot, :class=> "goToBallot" %></p>
+		<p><%= ballot.county %> County, <%= ballot.state %> - <%= ballot.city %> - Ward <%= ballot.ward %> - Precinct <%= ballot.precinct %></p>
+  <% end %>
 
-  <tbody>
-    <% @ballots.each do |ballot| %>
-      <tr>
-        <td><%= ballot.election_date %></td>
-        <td><%= ballot.state %></td>
-        <td><%= ballot.county %></td>
-        <td><%= ballot.city %></td>
-        <td><%= ballot.ward %></td>
-        <td><%= ballot.precinct %></td>
-        <td><%= link_to 'Show', ballot %></td>
-        <td><%= link_to 'Edit', edit_ballot_path(ballot) %></td>
-        <td><%= link_to 'Destroy', ballot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Ballot', new_ballot_path %>
+</div>

@@ -13,13 +13,18 @@
 		  Logged in as <strong><%= current_voter.email %></strong>.
 		  <%= link_to 'Edit profile', edit_voter_registration_path %> |
 		  <%= link_to "Logout", destroy_voter_session_path, method: :delete %>
+			<% if controller_name == 'ballots' && action_name == 'show' %>
+				 | <%= link_to "back to All Ballots", ballots_path %>
+			<% end %>
 		<% end %>
 	</div>
 	
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 	
-	<%= yield %>
-
+	<div id="page">
+		<%= yield %>
+	</div>
+	
 </body>
 </html>

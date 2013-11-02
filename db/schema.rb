@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012194533) do
+ActiveRecord::Schema.define(version: 20131102180348) do
 
   create_table "ballots", force: true do |t|
     t.date     "election_date"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20131012194533) do
     t.integer  "precinct"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "officialBallot"
+    t.integer  "ballotColumns"
+    t.integer  "voter_id"
   end
 
   create_table "ballots_offices", force: true do |t|
@@ -46,6 +49,7 @@ ActiveRecord::Schema.define(version: 20131012194533) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "terms"
+    t.integer  "ballotColumn"
   end
 
   create_table "offices_politicians", force: true do |t|
@@ -77,5 +81,14 @@ ActiveRecord::Schema.define(version: 20131012194533) do
 
   add_index "voters", ["email"], name: "index_voters_on_email", unique: true
   add_index "voters", ["reset_password_token"], name: "index_voters_on_reset_password_token", unique: true
+
+  create_table "votes", force: true do |t|
+    t.integer  "voter_id"
+    t.integer  "ballot_id"
+    t.integer  "office_id"
+    t.integer  "politician_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

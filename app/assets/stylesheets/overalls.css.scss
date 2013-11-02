@@ -1,5 +1,132 @@
 body {
 	background-color: #FFEEB3;
+	margin: 0;
+}
+a:visited { color: black; }
+a:visited:hover { background-color: black; color: white; }
+a.do { 
+	float: right;
+	background-color: #A3B6DE; 
+	border: none; 
+	width: 300px; 
+	padding: 30px; 
+	font-size: 32px; 
+	text-align: center; 
+	color: black;
+	text-decoration: none; 
+	display: block; 
+	margin: 20px 50px; 
+	&:hover {
+		border: 1px solid black;
+		background-color: #A3B6DE;
+		color: black;
+	}
+}
+p { font-size: 14px; line-height: 20px; }
+#page { width: 100%; }
+h1 {
+	margin-top: 80px;
+	font-size: 60px;
+	line-height: 66px;
+	font-family: arial;
+}
+h2 {
+	font-size: 26px;
+	line-height: 30px;
+}
+.inCase {
+	font-size: 10px;
+	line-height: 12px;
+}
+div#topBar {
+	background-color: #FFDBB3;
+	position: fixed;
+	z-index: 5;
+	top: 0;
+	width: 100%;
+}
+#voter_nav { padding: 5px; position: relative; z-index: 10; }
+
+/*BALLOTS STYLING*/
+
+a.newNoteButton {
+	background-color: #FFDBB3; 
+	border: none; 
+	width: 80px; 
+	padding: 1px; 
+	font-size: 11px; 
+	font-weight: normal;
+	text-align: center; 
+	color: black;
+	text-decoration: none; 
+	display: inline-block; 
+	margin-left: 10px;
+	&:hover {
+		border: 1px solid black;
+		background-color: #FFDBB3;
+		color: black;
+	}
+}
+a.newOfficeButton {
+	background-color: #BFCDEA; 
+	border: none; 
+	width: 110px; 
+	padding: 10px; 
+	font-size: 14px; 
+	text-align: center; 
+	color: black;
+	text-decoration: none; 
+	display: block; 
+	margin: 80px auto; 
+	&:hover {
+		border: 1px solid black;
+		background-color: #BFCDEA;
+		color: black;
+	}
+}
+#ballotChoices {
+	display: table;
+	margin: 30px auto;
+}
+.ballotColumn {
+	float: left;
+	padding: 0 15px;
+}
+.columns1 { width: 100%; }
+.columns2 { width: 45%; }
+.columns3 { width: 33%; }
+.columns4 { width: 25%; }
+.columns5 { width: 20%; }
+.columns6 { width: 16%; }
+#ballotInfo {
+	text-align: center;
+	margin-top: 30px;
+}
+#ballotsPage {
+	text-align: center;
+	h1 {
+		margin: 170px auto 40px;
+		padding: 15px;
+	}
+	a.goToBallot {
+		text-decoration: none;
+		font-size: 32px;
+		line-height: 40px;
+	}
+	p {
+		font-size: 14px;
+		line-height: 20px;
+	}
+}
+.district {
+	text-align: center;
+	margin-top: 0px;
+}
+.office {
+	font-weight: bold;
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 0px;
 }
 
 /*AUTHENTICATION STYLING*/
