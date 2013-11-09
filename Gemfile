@@ -38,6 +38,9 @@ gem 'devise'
 # Use Thin for server instead of WEBrick
 gem 'thin'
 
+# Use Wicked for plug-in multi-step form functionality
+gem 'wicked'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

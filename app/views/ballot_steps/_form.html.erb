@@ -1,4 +1,3 @@
-
 <%= form_for(@ballot) do |f| %>
   <% if @ballot.errors.any? %>
     <div id="error_explanation">
@@ -11,13 +10,9 @@
       </ul>
     </div>
   <% end %>
-
-	<h1>What is the date of the election?</h1>
 	
-  <div class="field" id="selectElectionDate">
-    <%= f.date_select :election_date, options = { order: [:month, :day, :year] } %>
-  </div>
-
+	<%= yield f %>
+	
   <div class="actions">
     <%= f.button "Next" %>
   </div>

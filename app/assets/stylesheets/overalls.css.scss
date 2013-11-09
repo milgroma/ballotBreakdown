@@ -4,8 +4,7 @@ body {
 }
 a:visited { color: black; }
 a:visited:hover { background-color: black; color: white; }
-a.do { 
-	float: right;
+a.bigButton {
 	background-color: #A3B6DE; 
 	border: none; 
 	width: 300px; 
@@ -21,6 +20,15 @@ a.do {
 		background-color: #A3B6DE;
 		color: black;
 	}
+}
+a.do { 
+	float: right;
+}
+a.makeNew.bigButton {
+	margin: 150px auto;
+	padding: 80px;
+	font-size: 62px;
+	width: 500px;
 }
 p { font-size: 14px; line-height: 20px; }
 #page { width: 100%; }
@@ -45,9 +53,17 @@ div#topBar {
 	top: 0;
 	width: 100%;
 }
-#voter_nav { padding: 5px; position: relative; z-index: 10; }
+#voter_nav { position: fixed; bottom: 5px; right: 15px; z-index: 10; }
 
 /*BALLOTS STYLING*/
+h1 { text-align: center; }
+div { margin: 10px auto 20px; }
+input { padding: 10px; font-size: 28px; text-align: center; width: 450px; display: block; margin: 10px auto 5px; }
+input[type="checkbox"] { width: 20px; display: inline; margin: 0; }
+select { font-size: 52px; border: 0; }
+#selectElectionDate { width: 640px; margin-top: 100px; }
+button { background-color: #A3B6DE; border: none; width: 450px; padding: 20px; font-size: 32px; display: block; margin: 80px auto 0; }
+button:hover { border: 1px solid black; }
 
 a.newNoteButton {
 	background-color: #FFDBB3; 
@@ -131,15 +147,24 @@ a.newOfficeButton {
 
 /*AUTHENTICATION STYLING*/
 
-#signInPage {
+body.registrations {
+	background-color: #A3B6DE;
+}
+.gettingInPage {
 	width: 500px;
-	margin: 100px auto;
+	margin: 70px auto;
 	a#password { float: right; font-size: 12px; color: grey; }
 	a#signup { padding-left: 24px; }
 	div { margin: 10px auto 20px; }
 	input { padding: 10px; font-size: 28px; text-align: center; width: 450px; display: block; margin: 10px auto 5px; }
 	input[type="checkbox"] { width: 20px; display: inline; margin: 0; }
-	button { background-color: #A3B6DE; border: none; width: 450px; padding: 20px; font-size: 32px; display: block; margin: 80px auto 0; }
+	button { border: none; width: 450px; padding: 20px; font-size: 32px; display: block; margin: 80px auto 0; }
 	button:hover { border: 1px solid black; }
 	label { font-size: 14px; display: block; width: 450px; margin: 0 auto;}
+}
+#signInPage {
+	button { background-color: #A3B6DE; }
+}
+#signUpPage {
+	button { background-color: #FFEEB3; }
 }

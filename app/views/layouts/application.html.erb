@@ -6,8 +6,14 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
+<body class="<%= controller_name %>">
+	
+	<p class="alert"><%= alert %></p>
+	
+	<div id="page">
+		<%= yield %>
+	</div>
+	
 	<div id="voter_nav">
 		<% if voter_signed_in? %>
 		  Logged in as <strong><%= current_voter.email %></strong>.
@@ -17,13 +23,6 @@
 				 | <%= link_to "back to All Ballots", ballots_path %>
 			<% end %>
 		<% end %>
-	</div>
-	
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-	
-	<div id="page">
-		<%= yield %>
 	</div>
 	
 </body>

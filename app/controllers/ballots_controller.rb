@@ -29,7 +29,7 @@ class BallotsController < ApplicationController
 
     respond_to do |format|
       if @ballot.save
-        format.html { redirect_to @ballot, notice: 'Ballot was successfully created.' }
+        format.html { redirect_to ballot_steps_path(:ballot_id => @ballot.id) }
         format.json { render action: 'show', status: :created, location: @ballot }
       else
         format.html { render action: 'new' }
@@ -70,6 +70,6 @@ class BallotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ballot_params
-      params.require(:ballot).permit(:election_date, :state, :county, :city, :ward, :precinct)
+      params.require(:ballot).permit(:election_date, :state, :county, :city, :ward, :precinct, :officialBallot, :ballotColumns, :voter_id)
     end
 end

@@ -1,15 +1,22 @@
 <div id="ballotsPage">
-	
-	<div id="topBar">
-		<%= link_to 'New Ballot', new_ballot_path, :class => "do" %>
-	</div>
-	
-		<h1>Ballots</h1>
 
-  <% @ballots.each do |ballot| %>
-		<p><%= link_to ballot.election_date.strftime("%B %d, %Y"), ballot, :class=> "goToBallot" %></p>
-		<p><%= ballot.county %> County, <%= ballot.state %> - <%= ballot.city %> - Ward <%= ballot.ward %> - Precinct <%= ballot.precinct %></p>
-  <% end %>
+	<% if @ballots.count == 0 %>
+	
+		<%= link_to 'Set up a Ballot', new_ballot_path, :class => "makeNew bigButton" %>
+	
+	<% else  %>
+	
+		<div id="topBar">
+			<%= link_to 'New Ballot', new_ballot_path, :class => "do bigButton" %>
+		</div>
+	
+			<h1>Ballots</h1>
 
+	  <% @ballots.each do |ballot| %>
+			<p><%= link_to ballot.election_date.strftime("%B %d, %Y"), ballot, :class=> "goToBallot" %></p>
+			<p><%= ballot.county %> County, <%= ballot.state %> - <%= ballot.city %> - Ward <%= ballot.ward %> - Precinct <%= ballot.precinct %></p>
+	  <% end %>
+	
+	<% end %>
 
 </div>
