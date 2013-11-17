@@ -29,7 +29,8 @@ class BallotsController < ApplicationController
 
     respond_to do |format|
       if @ballot.save
-        format.html { redirect_to ballot_steps_path(:ballot_id => @ballot.id) }
+        session[:ballot_id] = @ballot.id
+        format.html { redirect_to ballot_steps_path }
         format.json { render action: 'show', status: :created, location: @ballot }
       else
         format.html { render action: 'new' }

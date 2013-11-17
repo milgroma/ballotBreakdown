@@ -1,0 +1,19 @@
+<div class="inputExplanation" id="iE1">
+	<h2>Where will you be voting?</h2>
+</div>
+
+<%= render layout: 'form' do |f| %>
+
+<div id="<%= params[:id] %>_fields">
+	
+  <div class="field">
+    <%= f.text_field :county, :placeholder => "county" %> <p>County,</p> <%= f.text_field :state, :placeholder => "state" %> <p>-</p> <%= f.text_field :city, :placeholder => "city" %>
+  </div>
+	<br />
+  <div class="field">
+    <p>Ward:</p> <%= f.number_field :ward, :placeholder => "ward" %> <p>- Precinct:</p> <%= f.number_field :precinct, :placeholder => "precinct" %>
+  </div>
+
+</div>
+	
+<% end %>

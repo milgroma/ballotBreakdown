@@ -1,6 +1,6 @@
 class BallotStepsController < ApplicationController
   include Wicked::Wizard
-  steps :official_ballot_copy
+  steps :official_ballot_copy, :where_you_vote, :ballot_steps
   
   before_action :set_ballot
   
@@ -16,12 +16,16 @@ class BallotStepsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ballot
-        @ballot = Ballot.find(params[:ballot_id])
+      unless @ballot.nil?
+        @ballot
+      else
+        @ballot = Ballot.find(session[:ballot_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ballot_params
-      params.require(:ballot).permit(:election_date, :state, :county, :city, :ward, :precinct, :officialBallot, :ballotColumns, :voter_id)
+      params.require(:ballot).permit(:election_date, :state, :county, :city, :ward, :precinct, :officialBallot, :ballotColumns, :voter_id, :ballot_id)
     end
     
 end

@@ -37,10 +37,12 @@ h1 {
 	font-size: 60px;
 	line-height: 66px;
 	font-family: arial;
+	font-weight: normal;
 }
 h2 {
 	font-size: 26px;
-	line-height: 30px;
+	line-height: 34px;
+	font-weight: normal;
 }
 .inCase {
 	font-size: 10px;
@@ -59,6 +61,11 @@ div#topBar {
 h1 { text-align: center; }
 div { margin: 10px auto 20px; }
 input { padding: 10px; font-size: 28px; text-align: center; width: 450px; display: block; margin: 10px auto 5px; }
+input#ballot_county { width: 150px; display:inline-block; margin: 10px 10px 5px;}
+input#ballot_state { width: 80px; display:inline-block; margin: 10px 10px 5px;}
+input#ballot_city { width: 150px; display:inline-block; margin: 10px 10px 5px;}
+input#ballot_ward { width: 120px; display:inline-block; margin: 10px 10px 5px;}
+input#ballot_precinct { width: 150px; display:inline-block; margin: 10px 10px 5px;}
 input[type="checkbox"] { width: 20px; display: inline; margin: 0; }
 select { font-size: 52px; border: 0; }
 #selectElectionDate { width: 640px; margin-top: 100px; }
@@ -138,13 +145,24 @@ a.newOfficeButton {
 	text-align: center;
 	margin-top: 0px;
 }
+.inputExplanation {
+	width: 800px;
+	margin-bottom: 50px;
+}
+.inputExplanation#iE1 {
+	margin-top: 80px;
+}
 .office {
 	font-weight: bold;
 	text-align: center;
 	margin-top: 40px;
 	margin-bottom: 0px;
 }
-
+#where_you_vote_fields {
+	width: 700px;
+	margin: 0 auto;
+	p { display: inline-block; font-size: 26px; margin: 10px 10px 5px; }
+}
 /*AUTHENTICATION STYLING*/
 
 body.registrations {

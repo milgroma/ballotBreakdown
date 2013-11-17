@@ -1,0 +1,15 @@
+<div class="inputExplanation" id="iE1">
+	<h2>How many columns are there on your ballot?</h2>
+</div>
+
+<%= render layout: 'form' do |f| %>
+
+<div id="<%= params[:id] %>_fields">
+	
+  <div class="field">
+		<%= f.number_field :ballotColumns %>
+  </div>
+
+</div>
+	
+<% end %>

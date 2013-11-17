@@ -1,4 +1,4 @@
-<%= form_for(@ballot) do |f| %>
+<%= form_for @ballot, url: wizard_path do |f| %>
   <% if @ballot.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ballot.errors.count, "error") %> prohibited this ballot from being saved:</h2>
