@@ -1,5 +1,6 @@
 class OfficesController < ApplicationController
   before_action :set_office, only: [:show, :edit, :update, :destroy]
+  before_action :set_ballot, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_voter!, except: [:index, :show]
 
   # GET /offices
@@ -29,7 +30,8 @@ class OfficesController < ApplicationController
 
     respond_to do |format|
       if @office.save
-        format.html { redirect_to @office, notice: 'Office was successfully created.' }
+        session[:office_id] = @office.id
+        format.html { redirect_to office_steps_path }
         format.json { render action: 'show', status: :created, location: @office }
       else
         format.html { render action: 'new' }
@@ -67,9 +69,17 @@ class OfficesController < ApplicationController
     def set_office
       @office = Office.find(params[:id])
     end
+    
+    def set_ballot
+      unless @ballot.nil?
+        @ballot
+      else
+        @ballot = Ballot.find(session[:ballot_id])
+      end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def office_params
-      params.require(:office).permit(:ballot_ids, :tier, :office, :district, :territory, :term_limit, :terms)
+      params.require(:office).permit(:ballot_ids, :tier, :office, :district, :territory, :term_limit, :terms, :ballotColumn)
     end
 end

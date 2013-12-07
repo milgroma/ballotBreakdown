@@ -69,7 +69,7 @@ input#ballot_precinct { width: 150px; display:inline-block; margin: 10px 10px 5p
 input[type="checkbox"] { width: 20px; display: inline; margin: 0; }
 select { font-size: 52px; border: 0; }
 #selectElectionDate { width: 640px; margin-top: 100px; }
-button { background-color: #A3B6DE; border: none; width: 450px; padding: 20px; font-size: 32px; display: block; margin: 80px auto 0; }
+button { background-color: #A3B6DE; border: none; width: 450px; padding: 20px; font-size: 32px; display: block; margin: 130px auto 0; }
 button:hover { border: 1px solid black; }
 
 a.newNoteButton {
@@ -139,6 +139,16 @@ a.newOfficeButton {
 	p {
 		font-size: 14px;
 		line-height: 20px;
+	}
+}
+#ballot_steps_fields {
+	width: 300px;
+	.field {
+		width: 90px;
+		margin: 0 auto;
+		select {
+			width: 90px;
+		}
 	}
 }
 .district {

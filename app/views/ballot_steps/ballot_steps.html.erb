@@ -1,5 +1,5 @@
 <div class="inputExplanation" id="iE1">
-	<h2>How many columns are there on your ballot?</h2>
+	<h2>How many columns appear on your ballot?</h2>
 </div>
 
 <%= render layout: 'form' do |f| %>
@@ -7,7 +7,7 @@
 <div id="<%= params[:id] %>_fields">
 	
   <div class="field">
-		<%= f.number_field :ballotColumns %>
+		<%= f.select :ballotColumns, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6]], :autofocus => "autofocus" %>
   </div>
 
 </div>

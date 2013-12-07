@@ -1,0 +1,19 @@
+<%= form_for @office, url: wizard_path do |f| %>
+  <% if @office.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@office.errors.count, "error") %> prohibited this ballot from being saved:</h2>
+
+      <ul>
+      <% @office.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+	<%= yield f %>
+	
+  <div class="actions">
+    <%= f.button "Next" %>
+  </div>
+<% end %>

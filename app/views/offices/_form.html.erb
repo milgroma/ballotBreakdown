@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+	<div class="inputExplanation" id="iE1">
+		<h2>For the first office listed on your ballot, what is the name of the office?</h2>
+	</div>
+	
   <div class="field">
     <%= f.label :ballot_ids %><br>
     <%= f.collection_select( 'ballot_ids', Ballot.all, :id, :election_date, prompt: "Which ballot is this for?", :election_date => 'office[ballot_ids][]', :selected => 1) %>

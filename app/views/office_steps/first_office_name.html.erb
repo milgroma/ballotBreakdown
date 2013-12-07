@@ -1,0 +1,28 @@
+<div class="inputExplanation" id="iE1">
+	<h2>For the first office listed on your ballot, what is the name of the office?</h2>
+</div>
+
+<%= render layout: 'form' do |f| %>
+
+<div id="<%= params[:id] %>_fields">
+	
+  <div class="field">
+    <%= f.label :district %><br>
+    <%= f.text_field :district %>
+  </div>
+  <div class="field">
+    <%= f.label :territory %><br>
+    <%= f.text_field :territory %>
+  </div>
+  <div class="field">
+    <%= f.label :term_limit %><br>
+    <%= f.select :term_limit, options_for_select(["Yes", "No"]), prompt: "Does this office have a term limit?" %>
+  </div>
+  <div class="field">
+    <%= f.label :terms %><br>
+    <%= f.text_field :terms %>
+  </div>
+
+</div>
+	
+<% end %>
