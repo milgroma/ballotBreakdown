@@ -1,5 +1,34 @@
-<h1>New politician</h1>
+<%= form_for(@politician) do |f| %>
+  <% if @politician.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@politician.errors.count, "error") %> prohibited this politician from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @politician.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+	<div class="inputExplanation" id="iE1">
+		<h2>Who can you vote for?</h2>
+	</div>
 
-<%= link_to 'Back', politicians_path %>
+    <%= f.hidden_field(:office_ids, :value => session[:office_id]) %>
+		
+	<div class="field">
+    <p>Name</p>
+    <%= f.text_field :name, :autofocus => "autofocus" %>
+  </div>
+  <div class="field">
+    <p>Party</p>
+    <%= f.text_field :party %>
+  </div>
+  <div class="field">
+		<a href="" class="newCandidateButton">Add another candidate</a>
+	</div>
+  <div class="actions">
+    <%= f.button "Next" %>
+  </div>
+<% end %>

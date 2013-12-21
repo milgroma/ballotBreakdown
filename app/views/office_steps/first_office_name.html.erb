@@ -1,27 +1,24 @@
 <div class="inputExplanation" id="iE1">
-	<h2>For the first office listed on your ballot, what is the name of the office?</h2>
+	<h2>For that office, do any of the following apply?</h2>
+	<p>You may want consider looking these up, if you don't know them, because it may help you make your decision later.</p>
+	<p>Leave blank, if it doesn't apply.</p>
 </div>
 
 <%= render layout: 'form' do |f| %>
 
 <div id="<%= params[:id] %>_fields">
 	
-  <div class="field">
-    <%= f.label :district %><br>
+		<%= f.select :simultaneousSeatholders, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8]], prompt: "How many can you select?" %>
+		<div class="field">
+    <p>District</p>
     <%= f.text_field :district %>
   </div>
   <div class="field">
-    <%= f.label :territory %><br>
-    <%= f.text_field :territory %>
+    <p>Territory (description of the District, so you know what/who they represent)</p>
+    <%= f.text_field :territory, placeholder: "eg. region, counties, or neighborhoods included" %>
   </div>
-  <div class="field">
-    <%= f.label :term_limit %><br>
-    <%= f.select :term_limit, options_for_select(["Yes", "No"]), prompt: "Does this office have a term limit?" %>
-  </div>
-  <div class="field">
-    <%= f.label :terms %><br>
-    <%= f.text_field :terms %>
-  </div>
+    <%= f.select :term_limit, options_for_select(["Yes", "No"]), prompt: "Is there a term limit?" %>
+    <%= f.select :terms, [["1", 1], ["2", 2], ["3", 3], ["4", 4]], prompt: "If 'Yes', how many terms?" %>
 
 </div>
 	

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102180348) do
+ActiveRecord::Schema.define(version: 20131221160244) do
 
   create_table "ballots", force: true do |t|
     t.date     "election_date"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20131102180348) do
     t.datetime "updated_at"
     t.integer  "terms"
     t.integer  "ballotColumn"
+    t.integer  "simultaneousSeatholders"
   end
 
   create_table "offices_politicians", force: true do |t|

@@ -17,13 +17,13 @@
 	
     <%= f.hidden_field(:ballot_ids, :value => session[:ballot_id]) %>
     <%= f.hidden_field(:ballotColumn, :value => "1") %>
-		<div class="field">
+	<div class="field">
     <p>Level of Government:</p>
     <%= f.text_field :tier, :placeholder => "eg. Supreme Court, State, County, etc" %>
   </div>
   <div class="field">
     <p>Position:</p>
-    <%= f.text_field :office, :placeholder => "" %>
+    <%= f.text_field :office, :placeholder => "eg. Justice, Senator, Represenative, etc" %>
   </div>
 
   <div class="actions">

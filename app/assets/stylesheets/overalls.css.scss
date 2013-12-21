@@ -26,8 +26,9 @@ a.do {
 }
 a.makeNew.bigButton {
 	margin: 150px auto;
-	padding: 80px;
+	padding: 60px;
 	font-size: 62px;
+	line-height: 76px;
 	width: 500px;
 }
 p { font-size: 14px; line-height: 20px; }
@@ -155,6 +156,21 @@ a.newOfficeButton {
 	text-align: center;
 	margin-top: 0px;
 }
+#first_office_name_fields {
+	width: 800px;
+	.field {
+		width: 450px;
+		margin: 80px auto 10px;
+		p {
+			font-size: 16px;
+			line-height: 22px;	
+		}
+	}
+	select {
+		width: 710px;
+		margin: 60px auto 10px;
+	}
+}
 .inputExplanation {
 	width: 800px;
 	margin-bottom: 50px;
@@ -162,11 +178,48 @@ a.newOfficeButton {
 .inputExplanation#iE1 {
 	margin-top: 80px;
 }
+#new_office .field p {
+	width: 450px;
+	margin: 20px auto 10px;
+	font-size: 16px;
+	line-height: 22px;
+}
 .office {
 	font-weight: bold;
 	text-align: center;
 	margin-top: 40px;
 	margin-bottom: 0px;
+}
+#page {
+	margin-bottom: 150px;
+}
+.politicians {
+	.field {
+		width: 450px;
+		margin: 20px auto 10px;
+		p {
+			font-size: 16px;
+			line-height: 22px;
+		}
+	}
+	a.newCandidateButton {
+		background-color: #FFDBB3; 
+		border: none; 
+		width: 180px; 
+		padding: 5px; 
+		font-size: 14px; 
+		font-weight: normal;
+		text-align: center; 
+		color: black;
+		text-decoration: none; 
+		display: inline-block; 
+		margin-top: 30px;
+		&:hover {
+			border: 1px solid black;
+			background-color: #FFDBB3;
+			color: black;
+		}
+	}
 }
 #where_you_vote_fields {
 	width: 700px;

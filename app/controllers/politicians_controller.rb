@@ -1,5 +1,7 @@
 class PoliticiansController < ApplicationController
   before_action :set_politician, only: [:show, :edit, :update, :destroy]
+  before_action :set_office, only: [:show, :edit, :update, :destroy]
+
   before_filter :authenticate_voter!, except: [:index, :show]
 
   # GET /politicians
@@ -66,6 +68,14 @@ class PoliticiansController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_politician
       @politician = Politician.find(params[:id])
+    end
+    
+    def set_office
+      unless @office.nil?
+        @office
+      else
+        @office = Office.find(session[:office_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
