@@ -18,6 +18,11 @@ class OfficesController < ApplicationController
   def new
     @office = Office.new
   end
+  
+  # GET /offices/another_new
+  def another_new
+    @office = Office.new
+  end
 
   # GET /offices/1/edit
   def edit

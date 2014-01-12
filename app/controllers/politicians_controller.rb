@@ -31,8 +31,12 @@ class PoliticiansController < ApplicationController
 
     respond_to do |format|
       if @politician.save
-        format.html { redirect_to @politician, notice: 'Politician was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @politician }
+        unless params[:next_office]
+          format.html { redirect_to new_politician_path, notice: 'Politician was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @politician }
+        else
+          format.html { redirect_to another_new_offices_path, notice: 'Politician was successfully created.' }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @politician.errors, status: :unprocessable_entity }

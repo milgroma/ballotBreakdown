@@ -7,7 +7,11 @@ BallotBreakdown::Application.routes.draw do
 
   resources :politicians
 
-  resources :offices
+  resources :offices do
+    collection do |variable|
+      get 'another_new'      
+    end
+  end
   resources :office_steps
 
   resources :ballots

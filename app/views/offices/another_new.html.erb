@@ -1,0 +1,32 @@
+<%= form_for(@office) do |f| %>
+  <% if @office.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@office.errors.count, "error") %> prohibited this office from being saved:</h2>
+
+      <ul>
+      <% @office.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="inputExplanation" id="iE1">
+		<h2>For the next office listed on your ballot, what is the name of the office?</h2>
+	</div>
+	
+    <%= f.hidden_field(:ballot_ids, :value => session[:ballot_id]) %>
+    <%= f.hidden_field(:ballotColumn, :value => "1") %>
+	<div class="field">
+    <p>Level of Government:</p>
+    <%= f.text_field :tier, :placeholder => "eg. Supreme Court, State, County, etc" %>
+  </div>
+  <div class="field">
+    <p>Position:</p>
+    <%= f.text_field :office, :placeholder => "eg. Justice, Senator, Represenative, etc" %>
+  </div>
+
+  <div class="actions">
+    <%= f.button "Next" %>
+  </div>
+<% end %>

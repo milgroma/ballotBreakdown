@@ -1,3 +1,7 @@
+<div class="inputExplanation" id="iE1">
+	<h2>Who can you vote for?</h2>
+</div>
+
 <%= form_for(@politician) do |f| %>
   <% if @politician.errors.any? %>
     <div id="error_explanation">
@@ -11,24 +15,24 @@
     </div>
   <% end %>
 	
-	<div class="inputExplanation" id="iE1">
-		<h2>Who can you vote for?</h2>
-	</div>
+	<div class="candidateFields">
+	  <%= f.hidden_field(:office_ids, :value => session[:office_id]) %>
+	
+		<div class="field">
+		  <p>Name</p>
+		  <%= f.text_field :name, :autofocus => "autofocus" %>
+		</div>
+		<div class="field">
+		  <p>Party</p>
+		  <%= f.text_field :party, :placeholder => "if applicable" %>
+		</div>
+	
 
-    <%= f.hidden_field(:office_ids, :value => session[:office_id]) %>
-		
-	<div class="field">
-    <p>Name</p>
-    <%= f.text_field :name, :autofocus => "autofocus" %>
-  </div>
-  <div class="field">
-    <p>Party</p>
-    <%= f.text_field :party %>
-  </div>
-  <div class="field">
-		<a href="" class="newCandidateButton">Add another candidate</a>
 	</div>
+	
   <div class="actions">
-    <%= f.button "Next" %>
+    <%= f.button "Add the next candidate" %>
+		<%= f.button "No one else for this office. Next Office", :name => 'next_office' %>
   </div>
+	
 <% end %>
