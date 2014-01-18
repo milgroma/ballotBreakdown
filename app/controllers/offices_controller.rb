@@ -1,6 +1,7 @@
 class OfficesController < ApplicationController
   before_action :set_office, only: [:show, :edit, :update, :destroy]
   before_action :set_ballot, only: [:show, :edit, :update, :destroy]
+  before_action :set_ballotColumn, only: [:another_new]
   before_filter :authenticate_voter!, except: [:index, :show]
 
   # GET /offices
@@ -36,6 +37,7 @@ class OfficesController < ApplicationController
     respond_to do |format|
       if @office.save
         session[:office_id] = @office.id
+        session[:ballotColumn] = @office.ballotColumn
         format.html { redirect_to office_steps_path }
         format.json { render action: 'show', status: :created, location: @office }
       else
@@ -81,6 +83,10 @@ class OfficesController < ApplicationController
       else
         @ballot = Ballot.find(session[:ballot_id])
       end
+    end
+    
+    def set_ballotColumn
+      @ballotColumn = session[:ballotColumn]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

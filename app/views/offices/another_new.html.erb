@@ -16,7 +16,10 @@
 	</div>
 	
     <%= f.hidden_field(:ballot_ids, :value => session[:ballot_id]) %>
-    <%= f.hidden_field(:ballotColumn, :value => "1") %>
+  <div class="field">
+		<p>What column does this office appear in on the ballot?</p>
+		<div id="ballotColumnSelector"><%= f.select :ballotColumn, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6]], :selected => @ballotColumn %></div>
+	</div>
 	<div class="field">
     <p>Level of Government:</p>
     <%= f.text_field :tier, :placeholder => "eg. Supreme Court, State, County, etc" %>
