@@ -1,5 +1,5 @@
 body {
-	background-color: #FFEEB3;
+	background-color: #fff6d5;//#FFEEB3;
 	margin: 0;
 }
 a:visited { color: black; }
@@ -56,12 +56,12 @@ div#topBar {
 	top: 0;
 	width: 100%;
 }
-#voter_nav { position: fixed; bottom: 5px; right: 15px; z-index: 10; }
+#voter_nav { position: fixed; bottom: 10px; right: 10px; z-index: 10; width: 150px; word-wrap:break-word; background-color:#DDD; padding: 5px; opacity:0.9; margin:0;}
 
 /*BALLOTS STYLING*/
 h1 { text-align: center; }
 div { margin: 10px auto 20px; }
-input { padding: 10px; font-size: 28px; text-align: center; width: 450px; display: block; margin: 10px auto 5px; }
+input { padding: 10px; font-size: 28px; text-align: center; width: 426px; display: block; margin: 10px auto 5px; }
 input#ballot_county { width: 150px; display:inline-block; margin: 10px 10px 5px;}
 input#ballot_state { width: 80px; display:inline-block; margin: 10px 10px 5px;}
 input#ballot_city { width: 150px; display:inline-block; margin: 10px 10px 5px;}
@@ -72,6 +72,9 @@ select { font-size: 52px; border: 0; }
 #selectElectionDate { width: 640px; margin-top: 100px; }
 button { background-color: #A3B6DE; border: none; width: 450px; padding: 20px; font-size: 32px; display: block; margin: 130px auto 0; }
 button:hover { border: 1px solid black; }
+button[name=next_choice] { margin: 60px auto 0; }
+button[name=next_office] { background-color: #bccae7; margin: 30px auto 0; font-size: 28px; padding: 15px; }
+button[name=ballot_review] { position:fixed; top:10px; right:10px; margin:0; width:150px; background-color: #d5def0; font-size: 20px; color:#333; padding: 10px; }
 
 a.newNoteButton {
 	background-color: #FFDBB3; 
@@ -109,23 +112,31 @@ a.newOfficeButton {
 	}
 }
 #ballotChoices {
+	width: 90%;
+}
+#ballotColumns {
 	display: table;
 	margin: 30px auto;
+	width:98%;
 }
 .ballotColumn {
 	float: left;
-	padding: 0 15px;
+	padding: 0 20px;
+	//border-left: 1px solid #b38d00;
+	border-right: 1px solid #E1D9BB;
 }
+#column1 { border-left: 1px solid #E1D9BB; margin-left:5px; }
+
 #ballotColumnSelector {
 	width: 474px;
 	margin: 0 auto 40px;
 }
 .columns1 { width: 100%; }
-.columns2 { width: 45%; }
-.columns3 { width: 33%; }
-.columns4 { width: 25%; }
-.columns5 { width: 20%; }
-.columns6 { width: 16%; }
+.columns2 { width: 44%; }
+.columns3 { width: 28%; }
+.columns4 { width: 20%; }
+.columns5 { width: 15%; }
+.columns6 { width: 11%; }
 #ballotInfo {
 	text-align: center;
 	margin-top: 30px;
@@ -180,7 +191,7 @@ a.newOfficeButton {
 	margin-bottom: 50px;
 }
 .inputExplanation#iE1 {
-	margin-top: 80px;
+	margin-top: 50px;
 }
 #new_office .field p {
 	width: 450px;

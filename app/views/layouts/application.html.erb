@@ -16,7 +16,7 @@
 	
 	<div id="voter_nav">
 		<% if voter_signed_in? %>
-		  Logged in as <strong><%= current_voter.email %></strong>.
+		  Logged in as <strong><%= current_voter.email %></strong>.<br>
 		  <%= link_to 'Edit profile', edit_voter_registration_path %> |
 		  <%= link_to "Logout", destroy_voter_session_path, method: :delete %>
 			<% if controller_name == 'ballots' && action_name == 'show' %>
