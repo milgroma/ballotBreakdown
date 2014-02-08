@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<div id="ballotInfo">
+	<h2>
+	  <%= @ballot.election_date.strftime("%B %d, %Y") %> Election Ballot
+	</h2>
+
+	<p>
+	  <%= @ballot.county %> County, <%= @ballot.state %><br />
+	  <%= @ballot.city %> - Ward: <%= @ballot.ward %>, Precinct: <%= @ballot.precinct %><br />
+		<%= link_to 'edit info', edit_ballot_path(@ballot), :class => "inCase" %>
+	</p>
+	
+</div>
+
+<div id="ballotChoices">
+	<div id="ballotColumns">
+
+	<% if !@ballot.ballotColumns.nil? %>
+		<% @ballot.ballotColumns.times do |column| %>
+	
+			<div class="ballotColumn columns<%= @ballot.ballotColumns %>" id="column<%= column + 1 %>">
+				
+				<!-- LIST OUT ALL OF THE OFFICE ON THIS BALLOT -->
+					<% @ballot.offices.where("ballotColumn == ?", (column + 1)).each do |office| %>
+				
+								<p class="office"><%= link_to "#{office.tier} #{office.office}", office %></p>
+								<% unless office.district == "" %>
+									<p class="district">District <%= office.district %></p>
+								<% end %>
+
+								<!-- FOR EACH OFFICE, LIST OUT ALL OF THE POLITICIANS RUNNING -->
+								<% office.politicians.each do |politician| %>
+								
+									<%= form_for(@vote) do |f| %>
+									  <% if @vote.errors.any? %>
+									    <div id="error_explanation">
+									      <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+
+									      <ul>
+									      <% @vote.errors.full_messages.each do |msg| %>
+									        <li><%= msg %></li>
+									      <% end %>
+									      </ul>
+									    </div>
+									  <% end %>
+
+									    <%= f.hidden_field :voter_id %>
+									    <%= f.hidden_field :ballot_id, :value => @ballot.id %>
+									    <%= f.hidden_field :office_id, :value => office.id %>
+									    <%= f.hidden_field :politician_id, :value => politician.id %>
+											<p class="politician"><%= check_box_tag 'accept', :onchange => "$(this.form).submit();" %> <%= link_to politician.name, politician %> <%= link_to 'Add a Note', new_note_path(politician), :class => "newNoteButton" %></p>
+
+									<% end %>
+								
+									<ul>
+										<!-- FOR EACH POLITICIAN, LIST OUT ALL OF THE NOTES -->
+										<% politician.notes.each do |note| %>
+											<li><%= note.note %></li>
+										<% end %>
+									</ul>
+
+								<% end %>
+					
+					<% end %>
+		
+				<p>
+					<%= link_to 'Add an Office', new_office_path(column + 1), :class => "newOfficeButton" %>
+				</p>
+								
+			</div>
+
+		<% end %>
+	<% end %>
+	
+	</div>
+</div>

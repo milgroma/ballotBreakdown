@@ -1,5 +1,5 @@
 class BallotsController < ApplicationController
-  before_action :set_ballot, only: [:show, :edit, :update, :destroy]
+  before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :edit, :update, :destroy]
   before_filter :authenticate_voter!#, except: [:index, :show]
   
   # GET /ballots
@@ -11,6 +11,17 @@ class BallotsController < ApplicationController
   # GET /ballots/1
   # GET /ballots/1.json
   def show
+  end
+  
+  # GET /ballots/easy_votes/1
+  # GET /ballots/easy_votes/1.json
+  def easy_votes
+    @vote = Vote.new
+  end
+  
+  # GET /ballots/undecided_votes/1
+  # GET /ballots/undecided_votes/1.json
+  def undecided_votes
   end
 
   # GET /ballots/new
@@ -71,6 +82,6 @@ class BallotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ballot_params
-      params.require(:ballot).permit(:election_date, :state, :county, :city, :ward, :precinct, :officialBallot, :ballotColumns, :voter_id)
+      params.require(:ballot).permit(:election_date, :state, :county, :city, :ward, :precinct, :officialBallot, :ballotColumns, :voter_id, :votes_attributes)
     end
 end

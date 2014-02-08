@@ -14,7 +14,12 @@ BallotBreakdown::Application.routes.draw do
   end
   resources :office_steps
 
-  resources :ballots
+  resources :ballots do
+    member do
+      get 'easy_votes'
+      get 'undecided_votes'
+    end
+  end
   resources :ballot_steps
 
   # The priority is based upon order of creation: first created -> highest priority.
