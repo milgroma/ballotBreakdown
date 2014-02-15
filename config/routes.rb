@@ -1,5 +1,10 @@
 BallotBreakdown::Application.routes.draw do
-  resources :votes
+  resources :votes do
+    member do
+      get 'easy_votes'
+      get 'undecided_votes'
+    end
+  end
 
   devise_for :voters, :controllers => {:sessions => 'sessions'}
   
@@ -14,12 +19,7 @@ BallotBreakdown::Application.routes.draw do
   end
   resources :office_steps
 
-  resources :ballots do
-    member do
-      get 'easy_votes'
-      get 'undecided_votes'
-    end
-  end
+  resources :ballots
   resources :ballot_steps
 
   # The priority is based upon order of creation: first created -> highest priority.

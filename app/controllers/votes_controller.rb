@@ -1,6 +1,19 @@
 class VotesController < ApplicationController
+  before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :edit, :update, :destroy]
   before_action :set_vote, only: [:show, :edit, :update, :destroy]
 
+  
+  # GET /votes/easy_votes/1
+  # GET /votes/easy_votes/1.json
+  def easy_votes
+    @vote = Vote.new
+  end
+  
+  # GET /ballots/undecided_votes/1
+  # GET /ballots/undecided_votes/1.json
+  def undecided_votes
+  end
+  
   # GET /votes
   # GET /votes.json
   def index
@@ -65,6 +78,14 @@ class VotesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_vote
       @vote = Vote.find(params[:id])
+    end
+    
+    def set_ballot
+      unless @ballot.nil?
+        @ballot
+      else
+        @ballot = Ballot.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
