@@ -1,16 +1,17 @@
 class VotesController < ApplicationController
-  before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :edit, :update, :destroy]
+  before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :edit, :update]
   before_action :set_vote, only: [:show, :edit, :update, :destroy]
 
   
-  # GET /votes/easy_votes/1
-  # GET /votes/easy_votes/1.json
+  # GET /votes/1/easy_votes
+  # GET /votes/1/easy_votes.json
   def easy_votes
     @vote = Vote.new
+    @votes = Vote.where :ballot_id => @ballot.id
   end
   
-  # GET /ballots/undecided_votes/1
-  # GET /ballots/undecided_votes/1.json
+  # GET /ballots/1/undecided_votes
+  # GET /ballots/1/undecided_votes.json
   def undecided_votes
   end
   
