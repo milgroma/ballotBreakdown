@@ -1,0 +1,16 @@
+<% unless @votes.collect{|v| v.politician_id}.include?(politician.id) %>
+
+	<%= render 'votes/create_politician_vote', :politician => politician, :office => office %>
+
+<% else %>
+
+	<%= render 'votes/destroy_politician_vote', :politician => politician, :office => office %>
+
+<% end %>
+
+<ul>
+	<!-- FOR EACH POLITICIAN, LIST OUT ALL OF THE NOTES -->
+	<% politician.notes.each do |note| %>
+		<li><%= note.note %></li>
+	<% end %>
+</ul>

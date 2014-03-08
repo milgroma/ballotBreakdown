@@ -32,43 +32,7 @@
 								<!-- FOR EACH OFFICE, LIST OUT ALL OF THE POLITICIANS RUNNING -->
 								<% office.politicians.each do |politician| %>
 										
-									<% unless @votes.collect{|v| v.politician_id}.include?(politician.id) %>
-										<%= form_for @vote, :remote => true, :html => { id: "new_vote_#{politician.id}"} do |f| %>
-										  <% if @vote.errors.any? %>
-										    <div id="error_explanation">
-										      <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
-
-										      <ul>
-										      <% @vote.errors.full_messages.each do |msg| %>
-										        <li><%= msg %></li>
-										      <% end %>
-										      </ul>
-										    </div>
-										  <% end %>
-
-										    <%= f.hidden_field :voter_id, :value => current_voter.id, :id => "#{politician.id}_voter_id" %>
-										    <%= f.hidden_field :ballot_id, :value => @ballot.id, :id => "#{politician.id}_ballot_id" %>
-										    <%= f.hidden_field :office_id, :value => office.id, :id => "#{politician.id}_office_id" %>
-										    <%= f.hidden_field :politician_id, :value => politician.id, :id => "#{politician.id}_politician_id" %>
-												<%= submit_tag 'Opslaan', :name => "commit#{politician.id}", :style => 'display: none;' %>
-												<p class="politician"><%= check_box_tag 'accept', nil, false, :class => 'changeVote', :id => "check_box_#{politician.id}", :onclick => "this.form.commit#{politician.id}.click();changeVote(#{politician.id},#{@vote.id});" %> <%= link_to politician.name, politician %> <%= link_to 'Add a Note', new_note_path(politician), :class => "newNoteButton" %></p>
-
-										<% end %>
-									
-									<% else %>
-										<% vote = @votes.where(:politician_id => politician.id).first  %>
-
-											<p class="politician"><%= check_box_tag '_destroy', nil, true, :class => 'changeVote', :id => "check_box_#{politician.id}", :onclick => "$('#destroy_#{politician.id}_vote').click();" %> <%= link_to politician.name, politician %> <%= link_to 'Add a Note', new_note_path(politician), :class => "newNoteButton" %></p>
-											<%= link_to 'Destroy', vote, method: :delete, :remote => true, :id => "destroy_#{politician.id}_vote", :style => 'display:none;' %>
-
-									<% end %>
-								
-									<ul>
-										<!-- FOR EACH POLITICIAN, LIST OUT ALL OF THE NOTES -->
-										<% politician.notes.each do |note| %>
-											<li><%= note.note %></li>
-										<% end %>
-									</ul>
+										<div id="vote_for_<%= politician.id %>"><%= render 'votes/create_or_destroy_politician_vote', :politician => politician, :office => office %></div>
 
 								<% end %>
 					
