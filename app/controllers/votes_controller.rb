@@ -42,8 +42,12 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @vote }
+        @votes = Vote.where :ballot_id => vote_params[:ballot_id]
+        politician = Politician.find(vote_params[:politician_id])
+        office = Office.find(vote_params[:office_id])
+        render partial: 'create_or_destroy_politician_vote', content_type: "text/html", politician: politician, office: office, @ballot => vote_params[:ballot_id]
+        #format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @vote }
       else
         format.html { render action: 'new' }
         format.json { render json: @vote.errors, status: :unprocessable_entity }
@@ -70,7 +74,10 @@ class VotesController < ApplicationController
   def destroy
     @vote.destroy
     respond_to do |format|
-      format.html { redirect_to votes_url }
+      @votes = Vote.where :ballot_id => params[:ballot_id]
+      politician = Politician.find(vote_params[:politician_id])
+      office = Office.find(vote_params[:office_id])
+      render partial: 'create_or_destroy_politician_vote', content_type: "text/html", :locals => {:politician => politician, :office => office, @ballot => params[:id]}
       format.json { head :no_content }
     end
   end

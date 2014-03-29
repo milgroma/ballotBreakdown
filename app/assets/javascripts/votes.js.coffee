@@ -9,3 +9,12 @@
     $('#check_box_' + p).removeAttr("onclick").attr "onclick", "$('#destroy_" + p + "_vote').click();changeVote(" + p + ");"
 		$('#check_box_' + p).after('<a id="destroy_' + p + '_vote" style="display:none;" rel="nofollow" href="/votes/' + v + '" data-remote="true" data-method="delete">Destroy</a>')
   return
+
+$ ->
+  $("form[data-update-target]").on "ajax:completed", (evt, data) ->
+    target = $(this).data("update-target")
+    $("#" + target).html data
+    console.log data
+    return
+
+  return
