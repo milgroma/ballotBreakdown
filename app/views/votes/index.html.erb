@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Voter</th>
       <th>Ballot</th>
       <th>Office</th>
@@ -16,10 +17,11 @@
   <tbody>
     <% @votes.each do |vote| %>
       <tr>
+        <td><%= vote.id %></td>
         <td><%= vote.voter_id %></td>
         <td><%= vote.ballot_id %></td>
-        <td><%= vote.office_id %></td>
-        <td><%= vote.politician_id %></td>
+        <td><%= vote.office_id %><%= vote.office.office %></td>
+        <td><%= vote.politician_id %><%= vote.politician.name %></td>
         <td><%= link_to 'Show', vote %></td>
         <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
         <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :edit, :update]
-  before_action :set_vote, only: [:show, :edit, :update, :destroy]
+  before_action :set_vote, only: [:show, :edit, :update]
 
   
   # GET /votes/1/easy_votes
@@ -45,7 +45,7 @@ class VotesController < ApplicationController
         @votes = Vote.where :ballot_id => vote_params[:ballot_id]
         politician = Politician.find(vote_params[:politician_id])
         office = Office.find(vote_params[:office_id])
-        render partial: 'create_or_destroy_politician_vote', content_type: "text/html", politician: politician, office: office, @ballot => vote_params[:ballot_id]
+        render partial: 'votes/create_or_destroy_politician_vote', content_type: "text/html", politician: politician, office: office, @ballot => vote_params[:ballot_id]
         #format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
         #format.json { render action: 'show', status: :created, location: @vote }
       else
@@ -72,13 +72,14 @@ class VotesController < ApplicationController
   # DELETE /votes/1
   # DELETE /votes/1.json
   def destroy
+    @vote = Vote.find(params[:id])
     @vote.destroy
     respond_to do |format|
       @votes = Vote.where :ballot_id => params[:ballot_id]
-      politician = Politician.find(vote_params[:politician_id])
-      office = Office.find(vote_params[:office_id])
-      render partial: 'create_or_destroy_politician_vote', content_type: "text/html", :locals => {:politician => politician, :office => office, @ballot => params[:id]}
-      format.json { head :no_content }
+      @politician = Politician.find(params[:politician_id])
+      @office = Office.find(params[:office_id])
+      @ballot = Ballot.find(params[:ballot_id])
+      format.html { render partial: 'votes/create_or_destroy_politician_vote', content_type: "text/html", locals: {politician: @politician, office: @office, ballot: @ballot} }
     end
   end
 
@@ -98,6 +99,6 @@ class VotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
-      params.require(:vote).permit(:voter_id, :ballot_id, :office_id, :politician_id)
+      params.require(:vote).permit(:voter_id, :ballot_id, :office_id, :politician_id, :id)
     end
 end

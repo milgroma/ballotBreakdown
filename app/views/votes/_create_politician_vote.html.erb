@@ -1,4 +1,5 @@
 <p>create vote</p>
+<% @ballot = ballot %>
 <%= form_for @vote, :remote => true, :'data-update-target' => "vote_for#{politician.id}", :html => { id: "new_vote_#{politician.id}"} do |f| %>
   <% if @vote.errors.any? %>
     <div id="error_explanation">

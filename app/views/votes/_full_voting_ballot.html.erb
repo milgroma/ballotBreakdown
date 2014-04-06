@@ -23,6 +23,7 @@
 				
 				<!-- LIST OUT ALL OF THE OFFICE ON THIS BALLOT -->
 					<% @ballot.offices.where("ballotColumn == ?", (column + 1)).each do |office| %>
+						<% ballot = @ballot %>
 				
 								<p class="office"><%= link_to "#{office.tier} #{office.office}", office %></p>
 								<% unless office.district == "" %>
@@ -32,7 +33,7 @@
 								<!-- FOR EACH OFFICE, LIST OUT ALL OF THE POLITICIANS RUNNING -->
 								<% office.politicians.each do |politician| %>
 										
-										<div id="vote_for_<%= politician.id %>"><%= render 'votes/create_or_destroy_politician_vote', :politician => politician, :office => office %></div>
+										<div id="vote_for_<%= politician.id %>"><%= render 'votes/create_or_destroy_politician_vote', politician: politician, office: office, ballot: ballot %></div>
 
 								<% end %>
 					

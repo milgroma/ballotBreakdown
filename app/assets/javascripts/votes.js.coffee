@@ -11,10 +11,13 @@
   return
 
 $ ->
-  $("form[data-update-target]").on "ajax:completed", (evt, data) ->
+  $("a[data-update-target]").on "ajax:success", (evt, data, status, xhr) ->
+    #alert "I'm gonna change the vote for politician "
     target = $(this).data("update-target")
-    $("#" + target).html data
-    console.log data
+    #alert target
+    #alert $(this).data
+    $(target).html data
+    #console.log data
     return
 
   return
