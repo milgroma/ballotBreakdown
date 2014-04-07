@@ -43,9 +43,11 @@ class VotesController < ApplicationController
     respond_to do |format|
       if @vote.save
         @votes = Vote.where :ballot_id => vote_params[:ballot_id]
-        politician = Politician.find(vote_params[:politician_id])
-        office = Office.find(vote_params[:office_id])
-        render partial: 'votes/create_or_destroy_politician_vote', content_type: "text/html", politician: politician, office: office, @ballot => vote_params[:ballot_id]
+        @politician = Politician.find(vote_params[:politician_id])
+        @office = Office.find(vote_params[:office_id])
+        @ballot = Ballot.find(vote_params[:ballot_id])
+        format.html { render partial: 'votes/create_or_destroy_politician_vote', content_type: "text/html", locals: {politician: @politician, office: @office, ballot: @ballot} }
+
         #format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
         #format.json { render action: 'show', status: :created, location: @vote }
       else

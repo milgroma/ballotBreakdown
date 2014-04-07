@@ -21,3 +21,15 @@ $ ->
     return
 
   return
+
+$ ->
+  $("form[data-update-target]").on "ajax:completed", (evt, data, status, xhr) ->
+    alert "I'm gonna change the vote for politician "
+    target = $(this).data("update-target")
+    alert target
+    alert $(this).data
+    $(target).html data
+    console.log data
+    return
+
+  return

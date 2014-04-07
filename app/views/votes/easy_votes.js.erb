@@ -1,1 +1,0 @@
-jQuery("#vote_for_<%= escape_javascript(politician.id) %>").html("<%= escape_javascript(render(:partial => 'votes/create_or_destroy_politician_vote', :politician => politician, :office => office)) %>");
