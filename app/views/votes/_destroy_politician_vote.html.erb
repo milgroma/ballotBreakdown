@@ -1,4 +1,4 @@
-<p>delete vote</p>
+<!-- <p>delete vote</p> -->
 <% vote = @votes.where(:politician_id => politician.id).first  %>
 
 	<p class="politician"><%= check_box_tag '_destroy', nil, true, :class => 'changeVote', :id => "check_box_#{politician.id}", :onclick => "$('#destroy_#{politician.id}_vote').click();" %> <%= link_to politician.name, politician %> <%= link_to 'Add a Note', new_note_path(politician), :class => "newNoteButton" %></p>
