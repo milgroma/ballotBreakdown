@@ -39,7 +39,7 @@ class PoliticiansController < ApplicationController
           else
             @ballot = Ballot.find(session[:ballot_id])
           end
-          format.html { redirect_to easy_votes_ballot_path(@ballot), notice: 'Politician was successfully created.' }
+          format.html { redirect_to easy_votes_vote_path(@ballot), notice: 'Politician was successfully created.' }
         else
           format.html { redirect_to new_politician_path, notice: 'Politician was successfully created.' }
           format.json { render action: 'show', status: :created, location: @politician }

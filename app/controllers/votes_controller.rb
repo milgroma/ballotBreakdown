@@ -13,6 +13,8 @@ class VotesController < ApplicationController
   # GET /ballots/1/undecided_votes
   # GET /ballots/1/undecided_votes.json
   def undecided_votes
+    @vote = Vote.new
+    @votes = Vote.where :ballot_id => @ballot.id
   end
   
   # GET /votes

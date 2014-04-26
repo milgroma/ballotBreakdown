@@ -1,0 +1,12 @@
+<div class="inputExplanation" id="iE1">
+	<h1>Great Job.</h1>
+	<h2>Below are just the choices you still need to figure out.</h2><br>
+	<h2 class="underline">The next step is to pick out one of these to start with and figure out who you want to vote for. Once that's done, we'll pick another, and go throught them all until you're all done.</h2><br>
+	<h2>When you're done, click the 'Next' button.</h2>
+	
+	<%= link_to "Next", undecided_votes_vote_path(@ballot), :class => 'bigButton' %>
+	<br>
+</div>
+<hr>
+
+<%= render 'still_undecided_voting_ballot' %>
