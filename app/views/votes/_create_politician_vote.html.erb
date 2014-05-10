@@ -18,6 +18,6 @@
     <%= f.hidden_field :office_id, :value => office.id, :id => "#{politician.id}_office_id" %>
     <%= f.hidden_field :politician_id, :value => politician.id, :id => "#{politician.id}_politician_id" %>
 		<%= submit_tag 'Opslaan', :remote => true, :name => "commit#{politician.id}", :style => 'display: none;' %>
-		<p class="politician"><%= check_box_tag 'accept', nil, false, :class => 'changeVote', :id => "check_box_#{politician.id}", :onclick => "this.form.commit#{politician.id}.click();" %> <%= link_to politician.name, politician %> <%= link_to 'Add a Note', new_note_path(politician), :class => "newNoteButton" %></p>
+		<p class="politician"><%= check_box_tag 'accept', nil, false, :class => 'changeVote', :id => "check_box_#{politician.id}", :onclick => "this.form.commit#{politician.id}.click();" %> <%= politician.name %> <%= link_to 'Add a Note', new_note_path(politician), :class => "newNoteButton" %></p>
 
 <% end %>

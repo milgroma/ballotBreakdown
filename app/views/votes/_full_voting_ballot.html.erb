@@ -16,7 +16,7 @@
 <div id="ballotChoices">
 	<div id="ballotColumns">
 
-	<% if !@ballot.ballotColumns.nil? %>
+	<% unless @ballot.ballotColumns.nil? %>
 		<% @ballot.ballotColumns.times do |column| %>
 	
 			<div class="ballotColumn columns<%= @ballot.ballotColumns %>" id="column<%= column + 1 %>">
@@ -25,7 +25,7 @@
 					<% @ballot.offices.where("ballotColumn == ?", (column + 1)).each do |office| %>
 						<% ballot = @ballot %>
 				
-								<p class="office"><%= link_to "#{office.tier} #{office.office}", office %></p>
+								<p class="office"><%= office.tier %> <%= office.office %></p>
 								<% unless office.district == "" %>
 									<p class="district">District <%= office.district %></p>
 								<% end %>

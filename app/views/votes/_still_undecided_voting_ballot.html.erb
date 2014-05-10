@@ -11,26 +11,22 @@
 		<%= link_to 'edit info', edit_ballot_path(@ballot), :class => "inCase" %>
 	</p>
 	
-	<% @votes.each do |v| %>
-	<%= v.office.office %><br>
-	<% end %>
 </div>
 
 <div id="ballotChoices">
 	<div id="ballotColumns">
 
-	<% if !@ballot.ballotColumns.nil? %>
+	<% unless @ballot.ballotColumns.nil? %>
 		<% @ballot.ballotColumns.times do |column| %>
 	
 			<div class="ballotColumn columns<%= @ballot.ballotColumns %>" id="column<%= column + 1 %>">
 				
-				<!-- LIST OUT ALL OF THE OFFICE ON THIS BALLOT -->
-					<% @ballot.offices.where("ballotColumn == ?", (column + 1)).each do |office| %>
+				<!-- LIST OUT ALL OF THE OFFICES ON THIS BALLOT -->
+					<% @ballot.offices.where("ballotColumn == ?", (column + 1)).where.not(id: @votes.pluck(:office_id)).each do |office| %>
 					
-						<% unless @votes contains office %>
 							<% ballot = @ballot %>
 				
-							<p class="office"><%= link_to "#{office.tier} #{office.office}", office %></p>
+							<p class="office"><%= office.tier %> <%= office.office %></p>
 							<% unless office.district == "" %>
 								<p class="district">District <%= office.district %></p>
 							<% end %>
@@ -41,7 +37,6 @@
 									<div id="vote_for_<%= politician.id %>"><%= render 'votes/create_or_destroy_politician_vote', politician: politician, office: office, ballot: ballot %></div>
 
 							<% end %>
-						<% end %>
 					
 					<% end %>
 		
