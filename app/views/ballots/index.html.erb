@@ -10,7 +10,7 @@
 			<%= link_to 'New Ballot', new_ballot_path, :class => "do bigButton" %>
 		</div>
 	
-			<h1>Ballots</h1>
+		<h1>Ballots</h1>
 
 	  <% @ballots.each do |ballot| %>
 			<p><%= link_to ballot.election_date.strftime("%B %d, %Y"), easy_votes_vote_path(ballot), :class=> "goToBallot" %></p>

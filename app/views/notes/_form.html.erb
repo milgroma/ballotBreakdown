@@ -10,11 +10,9 @@
       </ul>
     </div>
   <% end %>
+	
+	<%= f.hidden_field :politician_id, :value => @politician.id %>
 
-  <div class="field">
-    <%= f.label :politician_id %><br>
-    <%= f.collection_select( 'politician_id', Politician.all, :id, :name, prompt: "Which politician is this for?", :name => 'note[politician_id][]', :selected => 1) %>
-  </div>
   <div class="field">
     <%= f.label :note %><br>
     <%= f.text_field :note %>

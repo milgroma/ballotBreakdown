@@ -1,5 +1,5 @@
 <!-- <p>delete vote</p> -->
 <% vote = @votes.where(:politician_id => politician.id).first  %>
 
-	<p class="politician"><%= check_box_tag '_destroy', nil, true, :class => 'changeVote', :id => "check_box_#{politician.id}", :onclick => "$('#destroy_#{politician.id}_vote').click();" %> <%= politician.name %> <%= link_to 'Add a Note', new_note_path(politician), :class => "newNoteButton" %></p>
+	<p class="politician"><%= check_box_tag '_destroy', nil, true, :class => 'changeVote', :id => "check_box_#{politician.id}", :onclick => "$('#destroy_#{politician.id}_vote').click();" %> <%= politician.name %> <%= link_to 'Add a Note', new_note_path(:politician_id => politician.id), :class => "newNoteButton" %></p>
 	<%= link_to 'Destroy', vote_path(vote, politician_id: politician.id, office_id: office.id, ballot_id: ballot.id), method: :delete, :remote => true, :"data-update-target" => "#vote_for_#{politician.id}", :id => "destroy_#{politician.id}_vote", :style => 'display:none;' %>

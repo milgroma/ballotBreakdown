@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_previous_page, only: [:new]
   before_filter :authenticate_voter!, except: [:index, :show]
 
   # GET /notes
@@ -16,6 +17,8 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @note = Note.new
+    @notes = Note.where :politician_id => params[:politician_id]
+    @politician = Politician.find(params[:politician_id])
   end
 
   # GET /notes/1/edit
@@ -29,7 +32,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.html { redirect_to new_note_path(:politician_id => @note.politician_id), notice: 'Note was successfully created.' }
         format.json { render action: 'show', status: :created, location: @note }
       else
         format.html { render action: 'new' }
@@ -67,9 +70,15 @@ class NotesController < ApplicationController
     def set_note
       @note = Note.find(params[:id])
     end
+    
+    def set_previous_page
+      if request.referer != request.original_url
+        session[:previous_page] = request.referer
+      end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:politician_id, :note, :rank)
+      params.require(:note).permit(:politician_id, :note, :rank, :previous_page)
     end
 end

@@ -1,5 +1,14 @@
-<h1>New note</h1>
+<h2>Add some notes to help you decide why you should or shouldn't pick <%= @politician.name.titleize %> when comparing with the other choices and the notes about them.</h2>
+
+<% if @notes.present? %>
+	<h3>Notes you already have:</h3>
+	<ul>
+	<% @notes.each do |n| %>
+		<li><%= n.note %></li>
+	<% end %>
+	</ul>
+<% end %>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', notes_path %>
+<%= link_to 'Back', session[:previous_page] %>
