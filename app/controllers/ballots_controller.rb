@@ -1,11 +1,13 @@
 class BallotsController < ApplicationController
   before_action :set_ballot, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_voter!#, except: [:index, :show]
+  before_filter :authenticate_voter!
   
   # GET /ballots
   # GET /ballots.json
   def index
-    @ballots = Ballot.all
+    @ballots = Ballot.where voter_id: params[:id]
+    @last_ballot = Ballot.where(voter_id: params[:id]).last
+    @old_ballots = Ballot.where(voter_id: params[:id]).where.not(id: @last_ballot.id).order('ballots.created_at DESC')
   end
 
   # GET /ballots/1

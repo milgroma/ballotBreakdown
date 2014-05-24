@@ -16,5 +16,6 @@ log/*.log
 tmp/
 
 .ruby-gemset
+.powenv
 
 config/database.yml

@@ -1,4 +1,11 @@
 BallotBreakdown::Application.routes.draw do
+
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
+  # You can have the root of your site routed with "root"
+  root 'application#welcome'
+  
   resources :votes do
     member do
       get 'easy_votes'
@@ -21,13 +28,12 @@ BallotBreakdown::Application.routes.draw do
 
   resources :ballots
   resources :ballot_steps
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'ballots#index'
-
+  
+  resources :voters do
+    resources :ballots
+    resources :ballot_steps
+  end
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
