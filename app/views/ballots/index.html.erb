@@ -12,13 +12,13 @@
 	
 		<h1 id="belowtopBar">Pick up where you left off</h1>
 		
-			<p><%= link_to @last_ballot.election_date.strftime("%B %d, %Y") + " election ballot", easy_votes_vote_path(@last_ballot), :class=> "goToBallot" %></p>
+			<p><%= link_to @last_ballot.election_date.strftime("%B %d, %Y") + " election ballot", where_was_i_voter_vote_path(params[:voter_id], @last_ballot.id), :class=> "goToBallot" %></p>
 			<p><%= @last_ballot.county %> County, <%= @last_ballot.state %> - <%= @last_ballot.city %> - Ward <%= @last_ballot.ward %> - Precinct <%= @last_ballot.precinct %></p>
 		
 		<h1>Old Ballots</h1>
 
 	  <% @old_ballots.each do |ballot| %>
-			<p><%= link_to ballot.election_date.strftime("%B %d, %Y") + " election ballot", easy_votes_vote_path(ballot), :class=> "goToBallot" %></p>
+			<p><%= link_to ballot.election_date.strftime("%B %d, %Y") + " election ballot", where_was_i_voter_vote_path(params[:voter_id], ballot), :class=> "goToBallot" %></p>
 			<p><%= ballot.county %> County, <%= ballot.state %> - <%= ballot.city %> - Ward <%= ballot.ward %> - Precinct <%= ballot.precinct %></p>
 	  <% end %>
 	

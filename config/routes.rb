@@ -5,19 +5,22 @@ BallotBreakdown::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'application#welcome'
-  
-  resources :votes do
-    member do
-      get 'easy_votes'
-      get 'undecided_votes'
-    end
-  end
 
   devise_for :voters, :controllers => {:sessions => 'sessions'}
   
-  resources :notes
-
-  resources :politicians
+  resources :voters do
+    resources :ballots
+    resources :ballot_steps
+    resources :votes do
+      member do
+        get 'easy_votes'
+        get 'undecided_votes'
+        get 'where_was_i'
+      end
+    end
+  end
+  
+  resources :notes, :votes, :politicians, :ballots, :ballot_steps
 
   resources :offices do
     collection do |variable|
@@ -25,14 +28,6 @@ BallotBreakdown::Application.routes.draw do
     end
   end
   resources :office_steps
-
-  resources :ballots
-  resources :ballot_steps
-  
-  resources :voters do
-    resources :ballots
-    resources :ballot_steps
-  end
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

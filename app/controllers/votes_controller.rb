@@ -1,20 +1,22 @@
 class VotesController < ApplicationController
-  before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :edit, :update]
+  before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :where_was_i, :edit, :update]
   before_action :set_vote, only: [:show, :edit, :update]
+  before_action :setup_votes, only: [:easy_votes, :undecided_votes, :where_was_i]
 
   
-  # GET /votes/1/easy_votes
-  # GET /votes/1/easy_votes.json
+  # GET /voter/1/votes/1/easy_votes
+  # GET /voter/1/votes/1/easy_votes.json
   def easy_votes
-    @vote = Vote.new
-    @votes = Vote.where :ballot_id => @ballot.id
   end
   
-  # GET /ballots/1/undecided_votes
-  # GET /ballots/1/undecided_votes.json
+  # GET /voter/1/votes/1/undecided_votes
+  # GET /voter/1/votes/1/undecided_votes.json
   def undecided_votes
-    @vote = Vote.new
-    @votes = Vote.where :ballot_id => @ballot.id
+  end
+  
+  # GET /voter/1/votes/1/where_was_i
+  # GET /voter/1/votes/1/where_was_i.json
+  def where_was_i
   end
   
   # GET /votes
@@ -91,6 +93,11 @@ class VotesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_vote
       @vote = Vote.find(params[:id])
+    end
+    
+    def setup_votes
+      @vote = Vote.new
+      @votes = Vote.where :ballot_id => @ballot.id
     end
     
     def set_ballot

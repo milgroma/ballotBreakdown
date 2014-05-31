@@ -5,9 +5,9 @@ class BallotsController < ApplicationController
   # GET /ballots
   # GET /ballots.json
   def index
-    @ballots = Ballot.where voter_id: params[:id]
-    @last_ballot = Ballot.where(voter_id: params[:id]).last
-    @old_ballots = Ballot.where(voter_id: params[:id]).where.not(id: @last_ballot.id).order('ballots.created_at DESC')
+    @ballots = Ballot.where voter_id: params[:voter_id]
+    @last_ballot = Ballot.where(voter_id: params[:voter_id]).last
+    @old_ballots = Ballot.where(voter_id: params[:voter_id]).where.not(id: @last_ballot.id).order('ballots.created_at DESC')
   end
 
   # GET /ballots/1

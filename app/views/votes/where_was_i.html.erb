@@ -1,0 +1,14 @@
+<div class="inputExplanation" id="iE1">
+	
+	<h1>Where did you last leave off on the below ballot?</h1>
+	<h2>1) Need to add more stuff to the ballot</h2>
+	<h2>2) Need to select my easy votes</h2>
+	<h2>3) Working through the remaining votes</h2>
+	<h2>4) Completed</h2>
+	
+	<%= link_to "Next", undecided_votes_voter_vote_path, :class => 'bigButton' %>
+	<br>
+</div>
+<hr>
+
+<%= render 'full_voting_ballot' %>
