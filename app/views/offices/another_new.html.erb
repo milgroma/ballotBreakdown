@@ -15,10 +15,14 @@
 		<h2>For the next office listed on your ballot, what is the name of the office?</h2>
 	</div>
 	
-    <%= f.hidden_field(:ballot_ids, :value => session[:ballot_id]) %>
+    <%= f.hidden_field(:ballot_id, :value => params[:ballot_id]) %>
   <div class="field">
-		<p>What column does this office appear in on the ballot?</p>
-		<div id="ballotColumnSelector"><%= f.select :ballotColumn, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6]], :selected => @ballotColumn %></div>
+		<% if params[:ballotColumn].present? %>
+			<%= f.hidden_field(:ballotColumn, value: params[:ballotColumn]) %>
+		<% else %>
+			<p>What column does this office appear in on the ballot?</p>
+			<div id="ballotColumnSelector"><%= f.select :ballotColumn, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6]], :selected => @ballotColumn %></div>
+		<% end %>
 	</div>
 	<div class="field">
     <p>Level of Government:</p>

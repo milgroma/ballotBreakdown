@@ -38,7 +38,7 @@ class OfficesController < ApplicationController
       if @office.save
         session[:office_id] = @office.id
         session[:ballotColumn] = @office.ballotColumn
-        format.html { redirect_to office_steps_path }
+        format.html { redirect_to voter_ballot_office_steps_path }
         format.json { render action: 'show', status: :created, location: @office }
       else
         format.html { render action: 'new' }
@@ -81,16 +81,16 @@ class OfficesController < ApplicationController
       unless @ballot.nil?
         @ballot
       else
-        @ballot = Ballot.find(session[:ballot_id])
+        @ballot = Ballot.find(params[:ballot_id])
       end
     end
     
     def set_ballotColumn
-      @ballotColumn = session[:ballotColumn]
+      @ballotColumn = params[:ballotColumn]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def office_params
-      params.require(:office).permit(:ballot_ids, :tier, :office, :district, :territory, :term_limit, :terms, :ballotColumn)
+      params.require(:office).permit(:ballot_id, :tier, :office, :district, :territory, :term_limit, :terms, :ballotColumn, :voter_id, :office_id)
     end
 end

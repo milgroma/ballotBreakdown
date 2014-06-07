@@ -8,6 +8,7 @@
 	<p>
 	  <%= @ballot.county %> County, <%= @ballot.state %><br />
 	  <%= @ballot.city %> - Ward: <%= @ballot.ward %>, Precinct: <%= @ballot.precinct %><br />
+		<%= link_to 'online copy', @ballot.officialBallot, target: '_blank' %><br>
 		<%= link_to 'edit info', edit_ballot_path(@ballot), :class => "inCase" %>
 	</p>
 	
@@ -40,7 +41,7 @@
 					<% end %>
 		
 				<p>
-					<%= link_to 'Add an Office', new_office_path(column + 1), :class => "newOfficeButton" %>
+					<%= link_to 'Add an Office', another_new_voter_ballot_offices_path(params[:voter_id], params[:id], ballot_id: @ballot.id, ballotColumn: column + 1), :class => "newOfficeButton" %>
 				</p>
 								
 			</div>

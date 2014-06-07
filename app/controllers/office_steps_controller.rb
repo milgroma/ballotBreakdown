@@ -23,7 +23,7 @@ class OfficeStepsController < ApplicationController
       unless @ballot.nil?
         @ballot
       else
-        @ballot = Ballot.find(session[:ballot_id])
+        @ballot = Ballot.find(params[:ballot_id])
       end
     end
     
@@ -31,13 +31,13 @@ class OfficeStepsController < ApplicationController
       unless @office.nil?
         @office
       else
-        @office = Office.find(session[:office_id])
+        @office = Office.find(params[:office_id])
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def office_params
-      params.require(:office).permit(:ballot_ids, :tier, :office, :district, :territory, :term_limit, :terms, :ballotColumn)
+      params.require(:office).permit(:ballot_id, :tier, :office, :district, :territory, :term_limit, :terms, :ballotColumn)
     end
     
 end

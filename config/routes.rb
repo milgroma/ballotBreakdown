@@ -9,13 +9,22 @@ BallotBreakdown::Application.routes.draw do
   devise_for :voters, :controllers => {:sessions => 'sessions'}
   
   resources :voters do
-    resources :ballots
+    resources :ballots do
+      resources :offices do
+        collection do |variable|
+          get 'another_new'      
+        end
+      end
+      resources :office_steps
+    end
     resources :ballot_steps
     resources :votes do
       member do
         get 'easy_votes'
         get 'undecided_votes'
         get 'where_was_i'
+        get 'under_construction'
+        get 'ready_for_the_election'
       end
     end
   end

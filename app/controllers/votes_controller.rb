@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
-  before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :where_was_i, :edit, :update]
+  before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :where_was_i, :under_construction, :ready_for_the_election, :edit, :update]
   before_action :set_vote, only: [:show, :edit, :update]
-  before_action :setup_votes, only: [:easy_votes, :undecided_votes, :where_was_i]
+  before_action :setup_votes, only: [:easy_votes, :undecided_votes, :where_was_i, :under_construction, :ready_for_the_election]
 
   
   # GET /voter/1/votes/1/easy_votes
@@ -17,6 +17,16 @@ class VotesController < ApplicationController
   # GET /voter/1/votes/1/where_was_i
   # GET /voter/1/votes/1/where_was_i.json
   def where_was_i
+  end
+  
+  # GET /voter/1/votes/1/ready_for_the_election
+  # GET /voter/1/votes/1/ready_for_the_election.json
+  def under_construction
+  end
+  
+  # GET /voter/1/votes/1/under_construction
+  # GET /voter/1/votes/1/under_construction.json
+  def ready_for_the_election
   end
   
   # GET /votes
