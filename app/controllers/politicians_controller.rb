@@ -32,16 +32,16 @@ class PoliticiansController < ApplicationController
     respond_to do |format|
       if @politician.save
         if params[:next_office]
-          format.html { redirect_to another_new_offices_path, notice: 'Politician was successfully created.' }
+          format.html { redirect_to another_new_voter_ballot_offices_path(voter_id: params[:politician][:voter_id], ballot_id: params[:politician][:ballot_id]), notice: 'Politician was successfully created.' }
         elsif params[:ballot_review]
           unless @ballot.nil?
             @ballot
           else
             @ballot = Ballot.find(session[:ballot_id])
           end
-          format.html { redirect_to easy_votes_voter_vote_path(@ballot), notice: 'Politician was successfully created.' }
+          format.html { redirect_to easy_votes_voter_vote_path(@ballot, id: params[:politician][:voter_id]), notice: 'Politician was successfully created.' }
         else
-          format.html { redirect_to new_politician_path, notice: 'Politician was successfully created.' }
+          format.html { redirect_to new_voter_ballot_politician_path(voter_id: params[:politician][:voter_id], ballot_id: params[:politician][:ballot_id]), notice: 'Politician was successfully created.' }
           format.json { render action: 'show', status: :created, location: @politician }
         end
       else

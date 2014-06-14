@@ -1,6 +1,6 @@
 class OfficesController < ApplicationController
   before_action :set_office, only: [:show, :edit, :update, :destroy]
-  before_action :set_ballot, only: [:show, :edit, :update, :destroy]
+  before_action :set_ballot, only: [:show, :edit, :create, :update, :destroy]
   before_action :set_ballotColumn, only: [:another_new]
   before_filter :authenticate_voter!, except: [:index, :show]
 
@@ -36,9 +36,9 @@ class OfficesController < ApplicationController
 
     respond_to do |format|
       if @office.save
-        session[:office_id] = @office.id
-        session[:ballotColumn] = @office.ballotColumn
-        format.html { redirect_to voter_ballot_office_steps_path }
+        #session[:office_id] = @office.id
+        #session[:ballotColumn] = @office.ballotColumn
+        format.html { redirect_to voter_ballot_office_steps_path(office_id: @office.id, ballot_id: params[:office][:ballot_id], voter_id: params[:office][:voter_id]) }
         format.json { render action: 'show', status: :created, location: @office }
       else
         format.html { render action: 'new' }
@@ -81,7 +81,8 @@ class OfficesController < ApplicationController
       unless @ballot.nil?
         @ballot
       else
-        @ballot = Ballot.find(params[:ballot_id])
+        @ballot_id = params[:office][:ballot_ids].present? ? params[:office][:ballot_ids] : params[:office][:ballot_id]
+        @ballot = Ballot.find(@ballot_id)
       end
     end
     
@@ -91,6 +92,6 @@ class OfficesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def office_params
-      params.require(:office).permit(:ballot_id, :tier, :office, :district, :territory, :term_limit, :terms, :ballotColumn, :voter_id, :office_id)
+      params.require(:office).permit(:ballot_id, :ballot_ids, :tier, :office, :district, :territory, :term_limit, :terms, :ballotColumn, :voter_id, :office_id)
     end
 end

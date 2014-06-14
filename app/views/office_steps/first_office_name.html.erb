@@ -7,7 +7,8 @@
 <%= render layout: 'form' do |f| %>
 
 <div id="<%= params[:id] %>_fields">
-	
+		
+		<%= f.hidden_field :office_id, value: params[:office_id] %>
 		<%= f.select :simultaneousSeatholders, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], ["7", 7], ["8", 8]], prompt: "How many can you select?" %>
 		<div class="field">
     <p>District</p>

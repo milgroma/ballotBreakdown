@@ -16,6 +16,7 @@ BallotBreakdown::Application.routes.draw do
         end
       end
       resources :office_steps
+      resources :politicians
     end
     resources :ballot_steps
     resources :votes do

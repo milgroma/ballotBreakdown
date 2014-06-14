@@ -14,6 +14,7 @@
 
 	<h1>What is the date of the election?</h1>
 	
+	<%= f.hidden_field :voter_id, value: params[:voter_id] %>
   <div class="field" id="selectElectionDate">
     <%= f.date_select :election_date, options = { order: [:month, :day, :year] } %>
   </div>

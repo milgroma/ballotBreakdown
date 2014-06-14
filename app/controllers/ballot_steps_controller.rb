@@ -14,7 +14,7 @@ class BallotStepsController < ApplicationController
   end
   
   def finish_wizard_path
-    new_office_path
+    new_voter_ballot_office_path(ballot_id: @ballot.id)
   end
   
   private

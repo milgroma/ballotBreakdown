@@ -16,6 +16,9 @@
   <% end %>
 	
 	<div class="candidateFields">
+    <%= f.hidden_field(:ballot_ids, :value => session[:ballot_id]) %>
+    <%= f.hidden_field(:ballot_id, :value => params[:ballot_id]) %>
+    <%= f.hidden_field(:voter_id, :value => params[:voter_id]) %>
 	  <%= f.hidden_field(:office_ids, :value => session[:office_id]) %>
 	
 		<div class="field">

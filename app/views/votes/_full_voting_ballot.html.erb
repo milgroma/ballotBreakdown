@@ -41,7 +41,7 @@
 					<% end %>
 		
 				<p>
-					<%= link_to 'Add an Office', another_new_voter_ballot_offices_path(params[:voter_id], params[:id], ballot_id: @ballot.id, ballotColumn: column + 1), :class => "newOfficeButton" %>
+					<%= link_to 'Add an Office', another_new_voter_ballot_offices_path(ballot_id: params[:id], ballotColumn: column + 1), :class => "newOfficeButton" %>
 				</p>
 								
 			</div>

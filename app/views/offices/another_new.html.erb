@@ -15,7 +15,9 @@
 		<h2>For the next office listed on your ballot, what is the name of the office?</h2>
 	</div>
 	
+    <%= f.hidden_field(:ballot_ids, :value => params[:ballot_id]) %>
     <%= f.hidden_field(:ballot_id, :value => params[:ballot_id]) %>
+    <%= f.hidden_field(:voter_id, :value => params[:voter_id]) %>
   <div class="field">
 		<% if params[:ballotColumn].present? %>
 			<%= f.hidden_field(:ballotColumn, value: params[:ballotColumn]) %>
