@@ -21,11 +21,15 @@
     <%= f.hidden_field(:ballotColumn, :value => "1") %>
 	<div class="field">
     <p>Level of Government:</p>
-    <%= f.text_field :tier, :placeholder => "eg. Supreme Court, State, County, etc" %>
+    <%= f.text_field :tier, :placeholder => "eg. United States, State, County, etc" %>
   </div>
   <div class="field">
     <p>Position:</p>
-    <%= f.text_field :office, :placeholder => "eg. Justice, Senator, Represenative, etc" %>
+    <%= f.text_field :office, :placeholder => "eg. President, Senator, Represenative, etc" %>
+  </div>
+  <div class="field">
+    <p>District/Division:</p>
+    <%= f.text_field :district, :placeholder => "if applicable" %>
   </div>
 
   <div class="actions">

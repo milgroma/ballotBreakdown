@@ -1,5 +1,5 @@
 <div class="inputExplanation" id="iE1">
-	<h2>Enter a voting option:</h2>
+	<h2>Who can you vote for:</h2>
 </div>
 
 <%= form_for(@politician) do |f| %>
@@ -16,10 +16,10 @@
   <% end %>
 	
 	<div class="candidateFields">
-    <%= f.hidden_field(:ballot_ids, :value => session[:ballot_id]) %>
+    <%= f.hidden_field(:ballot_ids, :value => params[:ballot_id]) %>
     <%= f.hidden_field(:ballot_id, :value => params[:ballot_id]) %>
     <%= f.hidden_field(:voter_id, :value => params[:voter_id]) %>
-	  <%= f.hidden_field(:office_ids, :value => session[:office_id]) %>
+	  <%= f.hidden_field(:office_ids, :value => params[:office_id]) %>
 	
 		<div class="field">
 		  <p>Name</p>
@@ -35,7 +35,7 @@
 	
   <div class="actions">
     <%= f.button "Add the next candidate", :name => 'next_choice' %>
-		<%= f.button "Skip to the next office", :name => 'next_office' %>
+		<%= f.button "Go to the next office", :name => 'next_office' %>
 		<%= f.button "The ballot is complete", :name => 'ballot_review' %>
   </div>
 	

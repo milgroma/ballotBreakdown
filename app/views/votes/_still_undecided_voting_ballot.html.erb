@@ -25,6 +25,7 @@
 					<% @ballot.offices.where("ballotColumn == ?", (column + 1)).where.not(id: @votes.pluck(:office_id)).each do |office| %>
 					
 							<% ballot = @ballot %>
+							<% voter = @voter %>
 				
 							<p class="office"><%= office.tier %> <%= office.office %></p>
 							<% unless office.district == "" %>
@@ -34,7 +35,7 @@
 							<!-- FOR EACH OFFICE, LIST OUT ALL OF THE POLITICIANS RUNNING -->
 							<% office.politicians.each do |politician| %>
 								
-									<div id="vote_for_<%= politician.id %>"><%= render 'votes/create_or_destroy_politician_vote', politician: politician, office: office, ballot: ballot %></div>
+									<div id="vote_for_<%= politician.id %>"><%= render 'votes/create_or_destroy_politician_vote', politician: politician, office: office, ballot: ballot, voter: voter %></div>
 
 							<% end %>
 					

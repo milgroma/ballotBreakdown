@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Tier</th>
       <th>Office</th>
       <th>District</th>
@@ -19,6 +20,7 @@
   <tbody>
     <% @offices.each do |office| %>
       <tr>
+        <td><%= office.id %></td>
         <td><%= office.tier %></td>
         <td><%= office.office %></td>
         <td><%= office.district %></td>

@@ -14,11 +14,20 @@ BallotBreakdown::Application.routes.draw do
         collection do |variable|
           get 'another_new'      
         end
+        resources :politicians
+      end
+      resources :votes do
+        member do
+          get 'easy_votes'
+          get 'undecided_votes'
+          get 'where_was_i'
+          get 'under_construction'
+          get 'ready_for_the_election'
+        end
       end
       resources :office_steps
       resources :politicians
     end
-    resources :ballot_steps
     resources :votes do
       member do
         get 'easy_votes'
@@ -28,6 +37,7 @@ BallotBreakdown::Application.routes.draw do
         get 'ready_for_the_election'
       end
     end
+    resources :ballot_steps
   end
   
   resources :notes, :votes, :politicians, :ballots, :ballot_steps

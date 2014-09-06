@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   before_action :set_ballot, only: [:show, :easy_votes, :undecided_votes, :where_was_i, :under_construction, :ready_for_the_election, :edit, :update]
+  before_action :set_voter, only: [:show, :easy_votes, :undecided_votes, :where_was_i, :under_construction, :ready_for_the_election, :edit, :update]
   before_action :set_vote, only: [:show, :edit, :update]
   before_action :setup_votes, only: [:easy_votes, :undecided_votes, :where_was_i, :under_construction, :ready_for_the_election]
 
@@ -60,7 +61,8 @@ class VotesController < ApplicationController
         @politician = Politician.find(vote_params[:politician_id])
         @office = Office.find(vote_params[:office_id])
         @ballot = Ballot.find(vote_params[:ballot_id])
-        format.html { render partial: 'votes/create_or_destroy_politician_vote', content_type: "text/html", locals: {politician: @politician, office: @office, ballot: @ballot} }
+        @voter = Voter.find(vote_params[:voter_id])
+        format.html { render partial: 'votes/create_or_destroy_politician_vote', content_type: "text/html", locals: {politician: @politician, office: @office, ballot: @ballot, voter: @voter} }
 
         #format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
         #format.json { render action: 'show', status: :created, location: @vote }
@@ -95,7 +97,8 @@ class VotesController < ApplicationController
       @politician = Politician.find(params[:politician_id])
       @office = Office.find(params[:office_id])
       @ballot = Ballot.find(params[:ballot_id])
-      format.html { render partial: 'votes/create_or_destroy_politician_vote', content_type: "text/html", locals: {politician: @politician, office: @office, ballot: @ballot} }
+      @voter = Voter.find(params[:voter_id])
+      format.html { render partial: 'votes/create_or_destroy_politician_vote', content_type: "text/html", locals: {politician: @politician, office: @office, ballot: @ballot, voter: @voter} }
     end
   end
 
@@ -110,11 +113,15 @@ class VotesController < ApplicationController
       @votes = Vote.where :ballot_id => @ballot.id
     end
     
+    def set_voter
+      @voter = Voter.find(params[:voter_id])
+    end
+    
     def set_ballot
       unless @ballot.nil?
         @ballot
       else
-        @ballot = Ballot.find(params[:id])
+        @ballot = Ballot.find(params[:ballot_id])
       end
     end
 

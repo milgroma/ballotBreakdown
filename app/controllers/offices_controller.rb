@@ -38,7 +38,7 @@ class OfficesController < ApplicationController
       if @office.save
         #session[:office_id] = @office.id
         #session[:ballotColumn] = @office.ballotColumn
-        format.html { redirect_to voter_ballot_office_steps_path(office_id: @office.id, ballot_id: params[:office][:ballot_id], voter_id: params[:office][:voter_id]) }
+        format.html { redirect_to new_voter_ballot_office_politician_path(office_id: @office.id, ballot_id: params[:office][:ballot_id], voter_id: params[:office][:voter_id]) }
         format.json { render action: 'show', status: :created, location: @office }
       else
         format.html { render action: 'new' }

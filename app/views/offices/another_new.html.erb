@@ -12,7 +12,7 @@
   <% end %>
 
 	<div class="inputExplanation" id="iE1">
-		<h2>For the next office listed on your ballot, what is the name of the office?</h2>
+		<h2>What is the next office on your ballot?</h2>
 	</div>
 	
     <%= f.hidden_field(:ballot_ids, :value => params[:ballot_id]) %>
@@ -33,6 +33,10 @@
   <div class="field">
     <p>Position:</p>
     <%= f.text_field :office, :placeholder => "eg. Justice, Senator, Represenative, etc" %>
+  </div>
+  <div class="field">
+    <p>District/Division:</p>
+    <%= f.text_field :district, :placeholder => "if applicable" %>
   </div>
 
   <div class="actions">
