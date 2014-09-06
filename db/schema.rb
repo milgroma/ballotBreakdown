@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131221160244) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ballots", force: true do |t|
     t.date     "election_date"
     t.string   "state"
@@ -80,8 +83,8 @@ ActiveRecord::Schema.define(version: 20131221160244) do
     t.datetime "updated_at"
   end
 
-  add_index "voters", ["email"], name: "index_voters_on_email", unique: true
-  add_index "voters", ["reset_password_token"], name: "index_voters_on_reset_password_token", unique: true
+  add_index "voters", ["email"], name: "index_voters_on_email", unique: true, using: :btree
+  add_index "voters", ["reset_password_token"], name: "index_voters_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "voter_id"
