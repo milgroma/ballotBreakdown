@@ -11,6 +11,7 @@ a.bigButton {
 	width: 300px; 
 	padding: 30px; 
 	font-size: 32px; 
+	line-height: 38px;
 	text-align: center; 
 	color: black;
 	text-decoration: none; 
@@ -202,6 +203,18 @@ a.newOfficeButton {
 .inputExplanation#iE1 {
 	margin-top: 50px;
 }
+.notes button {
+	margin-top: 30px;
+}
+.notes a.bigButton {
+	margin: 100px auto;
+}
+#new_note .field p {
+	width: 450px;
+	margin: 20px auto 10px;
+	font-size: 16px;
+	line-height: 22px;
+}
 #new_office .field p {
 	width: 450px;
 	margin: 20px auto 10px;
@@ -249,6 +262,9 @@ a.newOfficeButton {
 	width: 700px;
 	margin: 0 auto;
 	p { display: inline-block; font-size: 26px; margin: 10px 10px 5px; }
+}
+#ready_for_the_election a.bigButton {
+	margin: 40px auto;
 }
 /*AUTHENTICATION STYLING*/
 

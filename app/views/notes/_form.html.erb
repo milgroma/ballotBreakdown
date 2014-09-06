@@ -14,14 +14,11 @@
 	<%= f.hidden_field :politician_id, :value => @politician.id %>
 
   <div class="field">
-    <%= f.label :note %><br>
+    <p>Enter one note</p>
     <%= f.text_field :note %>
   </div>
-  <div class="field">
-    <%= f.label :rank %><br>
-    <%= f.text_field :rank %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button %>
   </div>
 <% end %>

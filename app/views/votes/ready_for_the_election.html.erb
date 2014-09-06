@@ -1,16 +1,19 @@
-<div class="inputExplanation" id="iE1">
-	<h1>Nice work!</h1>
-	<h2>You're ready for the election.</h2>
-	<h2>How does it feel?</h2><br>
+<div id="<%= params[:action] %>">
+	<div class="inputExplanation" id="iE1">
+		<h1>Nice work!</h1>
+		<h2>You are ready for the election.</h2>
+		<h2>How does it feel?</h2><br>
 	
-	<h1>Did you find this process worthwhile?</h1>
-	<a class="bigButton">Yes</a><a class="bigButton">No</a><a class="bigButton">Other</a><br>
+		<!-- <h1>Did you find this process worthwhile?</h1>
+		<a class="bigButton">Yes</a><a class="bigButton">No</a><a class="bigButton">Other</a><br>
+
+		<h2>Do you think other people would?</h2>
+		<h2>Tell them about it.</h2>
+		<a class="bigButton">Facebook</a><a class="bigButton">Twitter</a><a class="bigButton">Google+</a> -->
 	
-	<h2>Do you think other people would?</h2>
-	<h2>Tell them about it.</h2>
-	<a class="bigButton">Facebook</a><a class="bigButton">Twitter</a><a class="bigButton">Google+</a>
-	
-	<h1>Now what?</h1>
-	<a class="bigButton">Go somewhere else on the internet</a>
-	<a class="bigButton">Go back to your list of ballots</a>
+		<h1>Now what?</h1>
+		<%= link_to "Go back to your list of ballots", voter_ballots_path, :class => 'bigButton' %>
+		<%= link_to "Go somewhere else on the internet", "http://freeintenyears.com/frugal-tips/100-cheap-hobbies/", :class => 'bigButton' %>
+
+	</div>
 </div>

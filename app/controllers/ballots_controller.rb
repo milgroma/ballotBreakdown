@@ -7,7 +7,7 @@ class BallotsController < ApplicationController
   def index
     @ballots = Ballot.where voter_id: params[:voter_id]
     @last_ballot = Ballot.where(voter_id: params[:voter_id]).last
-    @old_ballots = Ballot.where(voter_id: params[:voter_id]).where.not(id: @last_ballot.id).order('ballots.created_at DESC')
+    @ballots.count > 1 ? @old_ballots = Ballot.where(voter_id: params[:voter_id]).where.not(id: @last_ballot.id).order('ballots.created_at DESC') : nil
   end
 
   # GET /ballots/1

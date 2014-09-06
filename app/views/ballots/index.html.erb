@@ -2,7 +2,7 @@
 
 	<% if @ballots.count == 0 %>
 	
-		<%= link_to "Let's start with the ballot", new_ballot_path, :class => "makeNew bigButton" %>
+		<%= link_to "Let's start with the ballot", new_voter_ballot_path, :class => "makeNew bigButton" %>
 	
 	<% else  %>
 	
@@ -12,16 +12,18 @@
 	
 		<h1 id="belowtopBar">Pick up where you left off</h1>
 		
-			<p><%= link_to @last_ballot.election_date.strftime("%B %d, %Y") + " election ballot", where_was_i_voter_vote_path(params[:voter_id], @last_ballot.id), :class=> "goToBallot" %></p>
+			<p><%= link_to @last_ballot.election_date.strftime("%B %d, %Y") + " election ballot", where_was_i_voter_ballot_vote_path(params[:voter_id], ballot_id: @last_ballot.id, id: 1), :class=> "goToBallot" %></p>
 			<p><%= @last_ballot.county %> County, <%= @last_ballot.state %> - <%= @last_ballot.city %> - Ward <%= @last_ballot.ward %> - Precinct <%= @last_ballot.precinct %></p>
 		
-		<h1>Old Ballots</h1>
+		<% if @ballots.count > 1 %>
+			<h1>Old Ballots</h1>
 
-	  <% @old_ballots.each do |ballot| %>
-			<p><%= link_to ballot.election_date.strftime("%B %d, %Y") + " election ballot", where_was_i_voter_vote_path(params[:voter_id], ballot), :class=> "goToBallot" %></p>
-			<p><%= ballot.county %> County, <%= ballot.state %> - <%= ballot.city %> - Ward <%= ballot.ward %> - Precinct <%= ballot.precinct %></p>
-	  <% end %>
+		  <% @old_ballots.each do |ballot| %>
+				<p><%= link_to ballot.election_date.strftime("%B %d, %Y") + " election ballot", where_was_i_voter_ballot_vote_path(params[:voter_id], ballot_id: ballot, id: 1), :class=> "goToBallot" %></p>
+				<p><%= ballot.county %> County, <%= ballot.state %> - <%= ballot.city %> - Ward <%= ballot.ward %> - Precinct <%= ballot.precinct %></p>
+		  <% end %>
 	
+		<% end %>
 	<% end %>
 
 </div>

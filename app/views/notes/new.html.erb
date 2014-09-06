@@ -1,4 +1,5 @@
-<h2>Add some notes to help you decide why you should or shouldn't pick <%= @politician.name.titleize %> when comparing with the other choices and the notes about them.</h2>
+<div class="inputExplanation" id="iE1">
+	<h2>Add some notes to help you decide why you should or shouldn't pick <%= @politician.name.titleize %> when comparing with the other choices and the notes about them.</h2>
 
 <% if @notes.present? %>
 	<h3>Notes you already have:</h3>
@@ -9,6 +10,8 @@
 	</ul>
 <% end %>
 
+</div>
+
 <%= render 'form' %>
 
-<%= link_to 'Back', session[:previous_page] %>
+<%= link_to 'Back to ballot', session[:previous_page], class: 'bigButton' %>
