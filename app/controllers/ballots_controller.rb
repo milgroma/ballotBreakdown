@@ -73,6 +73,6 @@ class BallotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ballot_params
-      params.require(:ballot).permit(:election_date, :state, :county, :city, :ward, :precinct, :officialBallot, :ballotColumns, :voter_id)
+      params.require(:ballot).permit(:election_date, :state, :county, :city, :ward, :precinct, :official_ballot, :ballot_columns, :voter_id)
     end
 end

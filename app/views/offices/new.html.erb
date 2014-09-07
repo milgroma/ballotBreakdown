@@ -18,7 +18,7 @@
     <%= f.hidden_field(:ballot_ids, :value => session[:ballot_id]) %>
     <%= f.hidden_field(:ballot_id, :value => params[:ballot_id]) %>
     <%= f.hidden_field(:voter_id, :value => params[:voter_id]) %>
-    <%= f.hidden_field(:ballotColumn, :value => "1") %>
+    <%= f.hidden_field(:ballot_column, :value => "1") %>
 	<div class="field">
     <p>Level of Government:</p>
     <%= f.text_field :tier, :placeholder => "eg. United States, State, County, etc" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221160244) do
+ActiveRecord::Schema.define(version: 20140907145524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20131221160244) do
     t.integer  "precinct"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "officialBallot"
-    t.integer  "ballotColumns"
+    t.string   "official_ballot"
+    t.integer  "ballot_columns"
     t.integer  "voter_id"
   end
 
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 20131221160244) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "terms"
-    t.integer  "ballotColumn"
-    t.integer  "simultaneousSeatholders"
+    t.integer  "ballot_column"
+    t.integer  "simultaneous_seatholders"
   end
 
   create_table "offices_politicians", force: true do |t|

@@ -121,12 +121,12 @@ a.newOfficeButton {
 #ballotChoices {
 	width: 90%;
 }
-#ballotColumns {
+#ballot_columns {
 	display: table;
 	margin: 30px auto;
 	width:98%;
 }
-.ballotColumn {
+.ballot_column {
 	float: left;
 	padding: 0 20px;
 	//border-left: 1px solid #b38d00;
@@ -134,7 +134,7 @@ a.newOfficeButton {
 }
 #column1 { border-left: 1px solid #E1D9BB; margin-left:5px; }
 
-#ballotColumnSelector {
+#ballot_columnSelector {
 	width: 474px;
 	margin: 0 auto 40px;
 }

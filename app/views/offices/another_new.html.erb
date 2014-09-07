@@ -19,11 +19,11 @@
     <%= f.hidden_field(:ballot_id, :value => params[:ballot_id]) %>
     <%= f.hidden_field(:voter_id, :value => params[:voter_id]) %>
   <div class="field">
-		<% if params[:ballotColumn].present? %>
-			<%= f.hidden_field(:ballotColumn, value: params[:ballotColumn]) %>
+		<% if params[:ballot_column].present? %>
+			<%= f.hidden_field(:ballot_column, value: params[:ballot_column]) %>
 		<% else %>
 			<p>What column does this office appear in on the ballot?</p>
-			<div id="ballotColumnSelector"><%= f.select :ballotColumn, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6]], :selected => @ballotColumn %></div>
+			<div id="ballot_columnSelector"><%= f.select :ballot_column, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6]], :selected => @ballot_column %></div>
 		<% end %>
 	</div>
 	<div class="field">

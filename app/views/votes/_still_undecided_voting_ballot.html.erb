@@ -14,15 +14,15 @@
 </div>
 
 <div id="ballotChoices">
-	<div id="ballotColumns">
+	<div id="ballot_columns">
 
-	<% unless @ballot.ballotColumns.nil? %>
-		<% @ballot.ballotColumns.times do |column| %>
+	<% unless @ballot.ballot_columns.nil? %>
+		<% @ballot.ballot_columns.times do |column| %>
 	
-			<div class="ballotColumn columns<%= @ballot.ballotColumns %>" id="column<%= column + 1 %>">
+			<div class="ballot_column columns<%= @ballot.ballot_columns %>" id="column<%= column + 1 %>">
 				
 				<!-- LIST OUT ALL OF THE OFFICES ON THIS BALLOT -->
-					<% @ballot.offices.where("ballotColumn == ?", (column + 1)).where.not(id: @votes.pluck(:office_id)).each do |office| %>
+					<% @ballot.offices.where("ballot_column == ?", (column + 1)).where.not(id: @votes.pluck(:office_id)).each do |office| %>
 					
 							<% ballot = @ballot %>
 							<% voter = @voter %>

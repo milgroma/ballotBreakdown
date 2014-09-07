@@ -26,7 +26,7 @@ class OfficeStepsController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def office_params
-      params.require(:office).permit(:ballot_id, :office_id, :tier, :office, :district, :territory, :simultaneousSeatholders, :term_limit, :terms, :ballotColumn)
+      params.require(:office).permit(:ballot_id, :office_id, :tier, :office, :district, :territory, :simultaneous_seatholders, :term_limit, :terms, :ballot_column)
     end
     
 end
