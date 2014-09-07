@@ -22,7 +22,7 @@
 			<div class="ballot_column columns<%= @ballot.ballot_columns %>" id="column<%= column + 1 %>">
 				
 				<!-- LIST OUT ALL OF THE OFFICES ON THIS BALLOT -->
-					<% @ballot.offices.where("ballot_column == ?", (column + 1)).where.not(id: @votes.pluck(:office_id)).each do |office| %>
+					<% @ballot.offices.where("ballot_column = ?", (column + 1)).where.not(id: @votes.pluck(:office_id)).each do |office| %>
 					
 							<% ballot = @ballot %>
 							<% voter = @voter %>
