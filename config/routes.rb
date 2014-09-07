@@ -4,7 +4,7 @@ BallotBreakdown::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'info#index'
+  root 'application#welcome'
   
   resources :info
 

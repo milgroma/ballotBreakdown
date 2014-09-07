@@ -5,7 +5,12 @@
 	<br>
 	
 	<%= link_to 'Sign Up', new_voter_registration_path, class: 'bigButton' %>
-	<%= link_to 'Log In', new_voter_session_path, class: 'bigButton' %>
+	
+	<% if voter_signed_in? %>
+		<%= link_to 'Log In', voter_ballots_path(voter_id: current_voter.id), class: 'bigButton' %>
+	<% else %>
+		<%= link_to 'Log In', new_voter_session_path, class: 'bigButton' %>
+	<% end %>
 
 	<div class="clear"></div>
 	<br>

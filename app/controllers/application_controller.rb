@@ -4,7 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   def welcome
-    redirect_to voter_ballots_path(current_voter)
+    
+    x = Rails.application.routes.recognize_path(request.referrer)
+    
+    if x[:controller] == 'sessions' || x[:controller] == 'devise/registrations'
+      redirect_to voter_ballots_path(voter_id: current_voter.id)
+    else
+      redirect_to info_index_path
+    end
   end  
   
 end
