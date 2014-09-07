@@ -177,6 +177,9 @@ a.newOfficeButton {
 		}
 	}
 }
+.clear {
+	clear: both;
+}
 .district {
 	text-align: center;
 	margin-top: 0px;
@@ -194,6 +197,16 @@ a.newOfficeButton {
 	select {
 		width: 710px;
 		margin: 60px auto 10px;
+	}
+}
+#info {
+	margin: 50px;
+	a.bigButton {
+		float: left;
+	}
+	ol li {
+		font-size: 20px;
+		line-height: 30px;
 	}
 }
 .inputExplanation {

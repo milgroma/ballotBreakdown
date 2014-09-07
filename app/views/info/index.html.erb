@@ -1,0 +1,23 @@
+<div id="<%= params[:controller] %>">
+	<h1>Welcome to the Ballot Breakdown</h1>
+
+	<h2>An app to help you organize your thoughts and research and figure out who you're going to vote for in the next election.</h2>
+	<br>
+	
+	<%= link_to 'Sign Up', new_voter_registration_path, class: 'bigButton' %>
+	<%= link_to 'Log In', new_voter_session_path, class: 'bigButton' %>
+
+	<div class="clear"></div>
+	<br>
+	
+	<h2>It will let you;</h2>
+	<ol>
+		<li>Input your ballot, so you understand what all of your choices will be.</li>
+		<li>Check off all of the votes you've already decided.</li>
+		<li>See just the choices that are still undecided.</li>
+		<li>Be able to make notes and look at your info until you can make a choice on everything that matters to you.</li>
+	</ol>
+
+	<h2>You can work through these steps, a little at a time, until you are all done and have made the choices you like.</h2>
+	<p>You can take a break whenever you need. We will save your info so that you come back to it when you're ready to spend a little more time.</p>
+</div>

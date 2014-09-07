@@ -14,16 +14,16 @@
 		<%= yield %>
 	</div>
 	
-	<div id="voter_nav">
-		<% if voter_signed_in? %>
-		  Logged in as <strong><%= current_voter.email %></strong>.<br>
-		  <%= link_to 'Edit profile', edit_voter_registration_path %> |
-		  <%= link_to "Logout", destroy_voter_session_path, method: :delete %>
-			<% if controller_name == 'ballots' && action_name == 'show' %>
-				 | <%= link_to "back to All Ballots", ballots_path %>
+			<% if voter_signed_in? %>
+			<div id="voter_nav">
+				  Logged in as <strong><%= current_voter.email %></strong>.<br>
+				  <%= link_to 'Edit profile', edit_voter_registration_path %> |
+				  <%= link_to "Logout", destroy_voter_session_path, method: :delete %>
+					<% if controller_name == 'ballots' && action_name == 'show' %>
+						 | <%= link_to "back to All Ballots", ballots_path %>			 
+					<% end %>
+			</div>
 			<% end %>
-		<% end %>
-	</div>
 	
 </body>
 </html>
