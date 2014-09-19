@@ -1,16 +1,17 @@
 <div id="<%= params[:controller] %>">
-	<h1>Welcome to the Ballot Breakdown</h1>
+	<h1>Welcome to your ballot breakdown</h1>
 
 	<h2>An app to help you organize your thoughts and any research you do, and figure out who you're going to vote for in the next election.</h2>
 	<br>
 	
-	<%= link_to 'Try it for the first time', new_voter_registration_path, class: 'bigButton' %>
-	
-	<% if voter_signed_in? %>
-		<%= link_to 'Go to my Ballot', voter_ballots_path(voter_id: current_voter.id), class: 'bigButton' %>
-	<% else %>
-		<%= link_to 'Log In', new_voter_session_path, class: 'bigButton' %>
-	<% end %>
+	<div id="login_buttons">	
+		<% if voter_signed_in? %>
+			<%= link_to 'Go to your stuff', voter_ballots_path(voter_id: current_voter.id), class: 'bigButton' %>
+		<% else %>
+			<%= link_to 'Try it for the first time', new_voter_registration_path, class: 'bigButton' %>
+			<%= link_to 'Get back to your stuff', new_voter_session_path, class: 'bigButton' %>
+		<% end %>
+	</div>
 
 	<div class="clear"></div>
 	<br>
