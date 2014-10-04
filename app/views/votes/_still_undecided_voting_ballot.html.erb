@@ -8,6 +8,7 @@
 	<p>
 	  <%= @ballot.county %> County, <%= @ballot.state %><br />
 	  <%= @ballot.city %> - Ward: <%= @ballot.ward %>, Precinct: <%= @ballot.precinct %><br />
+		<%= link_to 'online copy', @ballot.official_ballot, target: '_blank' %><br>
 		<%= link_to 'edit info', edit_ballot_path(@ballot), :class => "inCase" %>
 	</p>
 	

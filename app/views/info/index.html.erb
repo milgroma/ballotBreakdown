@@ -2,18 +2,7 @@
 	<h1>Welcome to your ballot breakdown</h1>
 
 	<h2>An app to help you organize your thoughts and any research you do, and figure out who you're going to vote for in the next election.</h2>
-	<br>
-	
-	<div id="login_buttons">	
-		<% if voter_signed_in? %>
-			<%= link_to 'Go to your stuff', voter_ballots_path(voter_id: current_voter.id), class: 'bigButton' %>
-		<% else %>
-			<%= link_to 'Try it for the first time', new_voter_registration_path, class: 'bigButton' %>
-			<%= link_to 'Get back to your stuff', new_voter_session_path, class: 'bigButton' %>
-		<% end %>
-	</div>
 
-	<div class="clear"></div>
 	<br>
 	
 	<h2>It will let you;</h2>
@@ -26,4 +15,18 @@
 
 	<h2>You can work through these steps, a little at a time, until you are all done and have made the choices you like.</h2>
 	<p>You can take a break whenever you need. We will save your info so that you come back to it when you're ready to spend a little more time.</p>
+	
+	<br>
+	
+	<div id="login_buttons">	
+		<% if voter_signed_in? %>
+			<%= link_to 'Get to it', voter_ballots_path(voter_id: current_voter.id), class: 'bigButton' %>
+		<% else %>
+			<%= link_to 'Try it for the first time', new_voter_registration_path, class: 'bigButton' %>
+			<%= link_to 'Get back to your stuff', new_voter_session_path, class: 'bigButton' %>
+		<% end %>
+	</div>
+
+	<div class="clear"></div>
+	
 </div>
