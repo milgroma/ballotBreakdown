@@ -6,6 +6,10 @@ BallotBreakdown::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'application#welcome'
   
+  authenticate :voter, lambda { |v| v.admin? } do
+    mount Upmin::Engine => '/admin'
+  end
+  
   resources :info
 
   devise_for :voters, :controllers => {:sessions => 'sessions'}
@@ -50,6 +54,8 @@ BallotBreakdown::Application.routes.draw do
     end
   end
   resources :office_steps
+  
+  match '*a', to: 'application#welcome', via: [:get, :post]
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
