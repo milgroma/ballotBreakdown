@@ -36,6 +36,7 @@ class OfficesController < ApplicationController
 
     respond_to do |format|
       if @office.save
+        Politician.create({office_ids: @office.id, name: "Abstain"})
         #session[:office_id] = @office.id
         #session[:ballot_column] = @office.ballot_column
         format.html { redirect_to new_voter_ballot_office_politician_path(office_id: @office.id, ballot_id: params[:office][:ballot_id], voter_id: params[:office][:voter_id]) }

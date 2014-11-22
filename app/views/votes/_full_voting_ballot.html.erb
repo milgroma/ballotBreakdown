@@ -38,6 +38,7 @@
 										<div id="vote_for_<%= politician.id %>"><%= render 'votes/create_or_destroy_politician_vote', voter: voter, politician: politician, office: office, ballot: ballot %></div>
 
 								<% end %>
+							<%= link_to 'Add an option', new_voter_ballot_office_politician_path(office_id: office.id, ballot_id: ballot.id, voter_id: voter.id) %>
 					
 					<% end %>
 		
