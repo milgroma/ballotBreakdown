@@ -56,6 +56,7 @@ gem 'wicked'
 gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'upmin-admin'
+gem 'figaro'
 
 
 ruby "2.0.0"

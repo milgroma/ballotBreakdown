@@ -7,4 +7,9 @@ class Voter < ActiveRecord::Base
   has_many :votes, :through => :ballots
   has_many :ballots
   
+  after_create :send_new_signup_notification
+  def send_new_signup_notification
+    SignupMailer.new_signup_notification(self).deliver
+  end
+  
 end
